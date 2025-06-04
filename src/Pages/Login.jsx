@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Lottie from "lottie-react";
 import { FaGoogle } from 'react-icons/fa';
 import registerAnimation from "../assets/lottie/login.json";
 import { NavLink } from 'react-router';
-
+import Swal from 'sweetalert2';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
-
+ const {Login,LoginWithGoogle,user,setUser} = useContext(AuthContext)
 const handleLogin = (e) => {
-    
+   
         e.preventDefault()
+     const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value
+
+    Login(email,password)
+   .then((userCredential) => {
+   
+    const user = userCredential.user;
+    Swal.fire({
+      title: `Hi,${user.email} Logged in Successfully`,
+      icon: "success",
+      draggable: true
+    });
+   console.log(user)
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+ 
+    console.log(errorCode)
+  });
     }
     const handleLoginWithGoogle = (e) =>{
          e.preventDefault()
