@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 import Lottie from "lottie-react";
 import registerAnimation from "../assets/lottie/register.json";
+import { AuthContext } from '../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
+    const { CreateUser, UpdateProfileInfo, setUser } = useContext(AuthContext);
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -13,6 +16,30 @@ const Register = () => {
     const password = form.password.value;
 
     console.log({ name, email, photo, password });
+   
+
+    CreateUser(email,password)
+.then((userCredential) =>{
+    const user = userCredential.user
+    Swal.fire({
+  title: "Account Created Successfully",
+  icon: "success",
+  draggable: true
+});
+    console.log(user)
+})
+    .catch(error=>{
+        console.log(error.code)
+    })
+
+    // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    // if (!passwordRegex.test(password)) {
+    //   setPasswordError(
+    //     'Password must be at least 6 characters, include uppercase and lowercase letters.'
+    //   );
+    //   return;
+    // }
   };
 
   return (
