@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
+import { MdOutlineAddBox } from "react-icons/md";
+import { FiPackage } from "react-icons/fi";
+import { FaSignOutAlt } from "react-icons/fa";
 import Swal from 'sweetalert2';
 const Navbar = () => {
   const logo = 'https://i.ibb.co/pjzbmxcf/tour.jpg';
   const {user,Logout} = useContext(AuthContext)
+   const [openDropdown, setOpenDropdown] = useState(false);
+
 const handleSignOut = ()=>{
     Logout().then(()=>{
  
@@ -72,10 +77,46 @@ const handleSignOut = ()=>{
       {/* Navbar End */}
       <div className="navbar-end flex items-center gap-4 pr-4">
         {
-          user?<NavLink to="">
-          <button onClick={handleSignOut} className="btn btn-sm bg-green-600 text-white">Log out</button>
-        </NavLink> : <NavLink to="/login">
-          <button className="btn btn-sm bg-green-600 text-white">Log in</button>
+          user && <>
+          
+       <div className="relative">
+            <img
+              onClick={() => setOpenDropdown(!openDropdown)}
+              src={user.photoURL || "https://i.ibb.co/YTNF3nY/user.png"}
+              alt="profile"
+              className="w-10 h-10 rounded-full border-2 border-green-500 cursor-pointer"
+            />
+            {openDropdown && (
+              <div className="absolute right-0 mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg border rounded-lg z-50 p-4 space-y-2">
+                <p className="font-semibold text-gray-800 dark:text-white">{user.displayName}</p>
+                <hr />
+                <NavLink
+                  to="/addPackage"
+                  className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900"
+                >
+                  <MdOutlineAddBox /> Add Package
+                </NavLink>
+                <NavLink
+                  to="/myPackages"
+                  className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900"
+                >
+                  <FiPackage /> Manage My Packages
+                </NavLink>
+                <button
+                  onClick={handleSignOut}
+                  className="flex items-center gap-2 btn text-sm text-red-600 hover:text-red-800"
+                >
+                  <FaSignOutAlt /> Logout
+                </button>
+              </div>
+            )}
+          </div>
+          
+          </> 
+        }
+        {
+          !user && <NavLink to={'/login'}>
+          <button className='btn bg-green-600 text-white'>Log in</button>
         </NavLink>
         }
       </div>

@@ -11,6 +11,8 @@ import Login from '../Pages/Login';
 import AllPackages from '../Components/AllPackages';
 import About from '../Pages/About';
 import MyBooking from '../Pages/MyBooking';
+import AddPackages from '../Pages/AddPackages';
+import ManageMyPackages from '../Pages/ManageMyPackages';
 
 const Router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ const Router = createBrowserRouter([
         {
             path:'/myBooking',
             element:<MyBooking></MyBooking>
+        },
+        {
+            path:'/addPackage',
+            element: <AddPackages></AddPackages>
+        },
+        {
+            path:'/myPackages',
+            element:<ManageMyPackages></ManageMyPackages>
         }
        
     ]

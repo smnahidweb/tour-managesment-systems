@@ -30,7 +30,14 @@ const handleLogin = (e) => {
     const errorCode = error.code;
  
     console.log(errorCode)
-  });
+    Swal.fire({
+              title: 'Error!',
+              text: error.message,
+              icon: 'error',
+              confirmButtonColor: '#ef4444',
+            });
+          });
+  
     }
     const handleLoginWithGoogle = (e) =>{
          e.preventDefault()
