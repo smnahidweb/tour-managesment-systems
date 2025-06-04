@@ -19,6 +19,11 @@ const Login = (email,password)=>{
     return signInWithEmailAndPassword(auth,email,password);
 }
 
+
+const Logout = ( )=>{
+   return signOut(auth)
+}
+
 useEffect( ()=>{
 
   const unsubcribe =   onAuthStateChanged(auth, (currentUser)=>{
@@ -43,7 +48,8 @@ useEffect( ()=>{
     user,
     setUser,
     loading,
-    setLoading
+    setLoading,
+     Logout
 }
     return <AuthContext value={Authdata} >{children}</AuthContext>
 };
