@@ -20,8 +20,12 @@ const handleSignOut = ()=>{
     <>
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/allPackages">All Packages</NavLink></li>
+      {
+      user ? <li><NavLink to="/myBooking">My Booking</NavLink></li>:''
+      }
       <li><NavLink to="/aboutUs">About Us</NavLink></li>
       <li><NavLink to="/register">Register</NavLink></li>
+
     </>
   );
   
@@ -68,7 +72,7 @@ const handleSignOut = ()=>{
       {/* Navbar End */}
       <div className="navbar-end flex items-center gap-4 pr-4">
         {
-          user?<NavLink to="/login">
+          user?<NavLink to="">
           <button onClick={handleSignOut} className="btn btn-sm bg-green-600 text-white">Log out</button>
         </NavLink> : <NavLink to="/login">
           <button className="btn btn-sm bg-green-600 text-white">Log in</button>

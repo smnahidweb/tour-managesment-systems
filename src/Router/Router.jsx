@@ -10,6 +10,7 @@ import Register from '../Pages/Register';
 import Login from '../Pages/Login';
 import AllPackages from '../Components/AllPackages';
 import About from '../Pages/About';
+import MyBooking from '../Pages/MyBooking';
 
 const Router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const Router = createBrowserRouter([
         {
             path:'/aboutUs',
             Component:About
+        },
+        {
+            path:'/myBooking',
+            element:<MyBooking></MyBooking>
         }
        
     ]

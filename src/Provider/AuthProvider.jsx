@@ -19,6 +19,11 @@ const Login = (email,password)=>{
     return signInWithEmailAndPassword(auth,email,password);
 }
 
+const UpdateProfileInfo = (updatedData)=>{
+    return updateProfile(auth.currentUser,updatedData)
+
+}
+
 
 const Logout = ( )=>{
    return signOut(auth)
@@ -49,7 +54,8 @@ useEffect( ()=>{
     setUser,
     loading,
     setLoading,
-     Logout
+     Logout,
+     UpdateProfileInfo
 }
     return <AuthContext value={Authdata} >{children}</AuthContext>
 };

@@ -1,12 +1,16 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router';
+import React, { useContext, useState } from 'react';
+import { NavLink, useNavigate } from 'react-router';
 import Lottie from "lottie-react";
 import registerAnimation from "../assets/lottie/register.json";
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import { getAuth } from 'firebase/auth';
 
 const Register = () => {
-    const { CreateUser, UpdateProfileInfo, setUser } = useContext(AuthContext);
+    const { CreateUser, UpdateProfileInfo, setUser ,user} = useContext(AuthContext);
+    const[passError,setPassError] = useState('')
+    const navigate = useNavigate();
+      const auth = getAuth();
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -16,31 +20,49 @@ const Register = () => {
     const password = form.password.value;
 
     console.log({ name, email, photo, password });
-   
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-    CreateUser(email,password)
-.then((userCredential) =>{
-    const user = userCredential.user
-    Swal.fire({
-  title: "Account Created Successfully",
-  icon: "success",
-  draggable: true
-});
-    console.log(user)
-})
-    .catch(error=>{
-        console.log(error.code)
-    })
+    if (!passwordRegex.test(password)) {
+      setPassError(
+        'Password must be at least 6 characters, include uppercase and lowercase letters.'
+      );
+      return;
+    }
 
-    // const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
-    // if (!passwordRegex.test(password)) {
-    //   setPasswordError(
-    //     'Password must be at least 6 characters, include uppercase and lowercase letters.'
-    //   );
-    //   return;
-    // }
+    CreateUser(email, password)
+      .then(() => {
+        return UpdateProfileInfo({
+          displayName: name,
+          photoURL: photo,
+        });
+      })
+      .then(() => {
+        // Set user using latest Firebase currentUser
+        const currentUser = auth.currentUser;
+        setUser({ ...currentUser });
+        console.log(user)
+
+        Swal.fire({
+          title: 'Account Created Successfully!',
+          icon: 'success',
+          confirmButtonColor: '#16a34a',
+          confirmButtonText: 'Continue',
+        });
+
+        navigate('/');
+      })
+      .catch((error) => {
+        console.error('Registration Error:', error.message);
+        Swal.fire({
+          title: 'Error!',
+          text: error.message,
+          icon: 'error',
+          confirmButtonColor: '#ef4444',
+        });
+      });
   };
+   
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -104,6 +126,8 @@ const Register = () => {
                 required
               />
             </div>
+            {passError && <p className="text-red-500 text-sm mt-2">{passError}</p>}
+
 
             {/* Submit Button */}
             <button
