@@ -2,39 +2,42 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 
-const titleWords = [
-  'Discover', 
-  'Your', 
-  'Perfect', 
-  'Getaway'
-];
-
 const Banner = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-gradient-to-r from-green-100 to-green-400 dark:from-gray-800 dark:to-gray-900 py-20 rounded-2xl mt-2">
-      <div className="max-w-6xl mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-green-700 dark:text-green-300 mb-6 flex justify-center flex-wrap gap-2">
-          {titleWords.map((word, index) => (
-            <motion.span
-              key={word}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.3 }}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
+    <div className="relative h-[400px] mt-2 w-full overflow-hidden rounded-2xl">
+      {/* Background Video */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        src="/bg.mp4" // Replace with your local or hosted video path
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+
+      {/* Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-10" />
+
+      {/* Content */}
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white px-4">
+        <motion.h1
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-bold mb-4"
+        >
+          Discover Your Perfect Getaway
+        </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.6 }}
-          className="text-lg text-gray-700 dark:text-gray-300 max-w-xl mx-auto mb-8"
+          transition={{ delay: 0.4, duration: 0.8 }}
+          className="text-lg md:text-xl max-w-2xl mb-6"
         >
-          Whether you're seeking adventure, relaxation, or a cultural journey, TourNest offers tailored packages for every traveler.
+          Explore breathtaking destinations with TourNest. Tailored packages await your next adventure.
         </motion.p>
 
         <motion.button
@@ -46,7 +49,7 @@ const Banner = () => {
           Explore All Packages
         </motion.button>
       </div>
-    </section>
+    </div>
   );
 };
 
