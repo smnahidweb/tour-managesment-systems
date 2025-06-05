@@ -24,6 +24,11 @@ const UpdateProfileInfo = (updatedData)=>{
 
 }
 
+const SignInWithGoogle = () =>{
+    setLoading(true)
+    return signInWithPopup(auth,provider);
+}
+
 
 const Logout = ( )=>{
    return signOut(auth)
@@ -55,7 +60,8 @@ useEffect( ()=>{
     loading,
     setLoading,
      Logout,
-     UpdateProfileInfo
+     UpdateProfileInfo,
+     SignInWithGoogle
 }
     return <AuthContext value={Authdata} >{children}</AuthContext>
 };

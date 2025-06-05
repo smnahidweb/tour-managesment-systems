@@ -7,7 +7,8 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
- const {Login,LoginWithGoogle,user,setUser} = useContext(AuthContext)
+ const {Login,LoginWithGoogle,user,setUser,SignInWithGoogle} = useContext(AuthContext)
+
 const handleLogin = (e) => {
    
         e.preventDefault()
@@ -20,7 +21,7 @@ const handleLogin = (e) => {
    
     const user = userCredential.user;
     Swal.fire({
-      title: `Hi,${user.email} Logged in Successfully`,
+      title: `Hi,${user.displayName} Logged in Successfully`,
       icon: "success",
       draggable: true
     });
@@ -39,9 +40,26 @@ const handleLogin = (e) => {
           });
   
     }
-    const handleLoginWithGoogle = (e) =>{
-         e.preventDefault()
+   
+
+    const handleLoginWithGoogle=(e)=>{
+      e.preventDefault()
+      SignInWithGoogle()
+      .then(result =>{
+        console.log(result)
+        Swal.fire({
+      title: `Hi,${result.user?.displayName} Logged in Successfully`,
+      icon: "success",
+      draggable: true
+    });
+      })
+      .catch(error =>{
+        console.log(error.code)
+      })
+      
+   
     }
+
     return (
          <div className="min-h-screen flex items-center justify-center">
                 
