@@ -60,7 +60,9 @@ const Router = createBrowserRouter([
         {
             path:'/allPackages/:id',
             element:
-                <Details></Details>,
+                <PrivateRoute>
+                    <Details></Details>
+                </PrivateRoute>,
             loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
         }
        

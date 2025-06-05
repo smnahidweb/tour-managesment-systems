@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import Lottie from "lottie-react";
 import { FaGoogle } from 'react-icons/fa';
 import registerAnimation from "../assets/lottie/login.json";
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Login = () => {
  const {Login,LoginWithGoogle,user,setUser,SignInWithGoogle} = useContext(AuthContext)
+ const navigate = useNavigate()
+  const location = useLocation();
 
 const handleLogin = (e) => {
    
@@ -25,7 +27,7 @@ const handleLogin = (e) => {
       icon: "success",
       draggable: true
     });
-   console.log(user)
+   navigate(`${location.state ? location.state : "/"}`)
   })
   .catch((error) => {
     const errorCode = error.code;
@@ -52,6 +54,7 @@ const handleLogin = (e) => {
       icon: "success",
       draggable: true
     });
+    navigate(`${location.state ? location.state : "/"}`)
       })
       .catch(error =>{
         console.log(error.code)
