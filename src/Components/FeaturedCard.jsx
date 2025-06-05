@@ -67,7 +67,7 @@ const FeaturedCard = ({data}) => {
             ৳{price}
           </p>
           <Link
-            to={`/package/${_id}`}
+            to={`/allPackages/${_id}`}
             className="px-4 py-1.5 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 transition"
           >
             View Details

@@ -14,6 +14,8 @@ import MyBooking from '../Pages/MyBooking';
 import AddPackages from '../Pages/AddPackages';
 import ManageMyPackages from '../Pages/ManageMyPackages';
 import Loading from '../Components/Loading';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import Details from '../Pages/Details';
 
 const Router = createBrowserRouter([
   {
@@ -54,6 +56,12 @@ const Router = createBrowserRouter([
         {
             path:'/myPackages',
             element:<ManageMyPackages></ManageMyPackages>
+        },
+        {
+            path:'/allPackages/:id',
+            element:
+                <Details></Details>,
+            loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
         }
        
     ]
