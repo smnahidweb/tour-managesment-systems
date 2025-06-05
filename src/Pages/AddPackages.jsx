@@ -1,8 +1,34 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const AddPackages = () => {
     const {user} = useContext(AuthContext)
+    // console.log(user.displayName,user.photoURL)
+    const handleAddPackages = (e) =>{
+        e.preventDefault();
+        const form = e.target;
+         const formData = new FormData(form);
+         const data = Object.fromEntries(formData.entries());
+         console.log(data)
+    
+         axios.post('http://localhost:3000/allPackages',data)
+       .then(res => {
+       console.log(res.data)
+      if(res.data.insertedId){
+        Swal.fire({
+                        title: "Packages added Successfully",
+                        icon: "success",
+                        draggable: true })
+    }
+})
+.catch(error=>{
+    console.log(error)
+})
+
+    
+    }
     return (
         <div>
           <div className="max-w-5xl mx-auto p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
@@ -10,7 +36,7 @@ const AddPackages = () => {
         Add New Tour Package
       </h2>
 
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm md:text-base">
+      <form onSubmit={handleAddPackages} className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm md:text-base">
         {/* Tour Name */}
         <div>
           <label className="block mb-1 font-semibold">Tour Name</label>
@@ -103,6 +129,7 @@ const AddPackages = () => {
           <label className="block mb-1 font-semibold">Guide Name</label>
           <input
             name="guideName"
+            // defaultValue={user?.displayName}
             type="text"
             placeholder="Full name of the guide"
             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-600 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 transition-all duration-300"
@@ -114,6 +141,7 @@ const AddPackages = () => {
           <label className="block mb-1 font-semibold">Guide Photo URL</label>
           <input
             name="guidePhoto"
+            // defaultValue={}
             type="text"
             placeholder="Paste image URL"
             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-600 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 transition-all duration-300"
@@ -147,7 +175,7 @@ const AddPackages = () => {
         <div className="md:col-span-2 text-center">
           <button
             type="submit"
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold px-10 py-3 rounded-lg shadow-md transition duration-300"
+            className="bg-green-600 w-full hover:bg-green-700 text-white font-semibold px-10 py-3 rounded-lg shadow-md transition duration-300"
           >
             Submit Package
           </button>

@@ -13,6 +13,7 @@ import About from '../Pages/About';
 import MyBooking from '../Pages/MyBooking';
 import AddPackages from '../Pages/AddPackages';
 import ManageMyPackages from '../Pages/ManageMyPackages';
+import Loading from '../Components/Loading';
 
 const Router = createBrowserRouter([
   {
@@ -34,7 +35,9 @@ const Router = createBrowserRouter([
         },
         {
             path:'/allPackages',
-            Component:AllPackages
+            Component:AllPackages,
+            loader: ()=> fetch('http://localhost:3000/allPackages'),
+            hydrateFallbackElement:<Loading></Loading>
         },
         {
             path:'/aboutUs',
