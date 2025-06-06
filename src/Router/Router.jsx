@@ -17,6 +17,7 @@ import Loading from '../Components/Loading';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Details from '../Pages/Details';
 import Booking from '../Pages/Booking';
+import Update from '../Pages/Update';
 
 const Router = createBrowserRouter([
   {
@@ -65,7 +66,10 @@ const Router = createBrowserRouter([
             path:'/managePackages',
             element:<PrivateRoute>
                 <ManageMyPackages></ManageMyPackages>
-            </PrivateRoute>
+            </PrivateRoute>,
+             loader: ()=> fetch('http://localhost:3000/allPackages'),
+            
+
         },
         {
             path:'/allPackages/:id',
@@ -81,6 +85,12 @@ const Router = createBrowserRouter([
                 <Booking></Booking>
             </PrivateRoute>,
              loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
+        },
+        {
+            path:'update/:id',
+            element:<PrivateRoute>
+                <Update></Update>
+            </PrivateRoute>
         }
        
     ]
