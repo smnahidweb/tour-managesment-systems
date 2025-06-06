@@ -44,7 +44,7 @@ const MyBooking = () => {
             </thead>
             <tbody className="divide-y divide-gray-200 text-gray-800">
               {bookings.map((booking) => (
-                <tr key={booking._id} className="hover:bg-gray-50">
+                <tr key={booking._id} className="hover:bg-green-100">
                   <td className="px-4 py-3 font-medium">{booking.tourName}</td>
                   <td className="px-4 py-3">{booking?.buyerName}</td>
                   <td className="px-4 py-3">{booking.contactNo}</td>

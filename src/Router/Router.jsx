@@ -90,7 +90,8 @@ const Router = createBrowserRouter([
             path:'update/:id',
             element:<PrivateRoute>
                 <Update></Update>
-            </PrivateRoute>
+            </PrivateRoute>,
+              loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
         }
        
     ]

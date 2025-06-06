@@ -25,11 +25,11 @@ const ManageMyPackages = () => {
               <th className="px-5 py-3">Actions</th>
             </tr>
           </thead>
-          <tbody className="text-gray-700 dark:text-gray-100">
+          <tbody className="text-gray-700 dark:text-gray-100 divide-y divide-gray-200">
             {allPackages.map((pack) => (
               <tr
                 key={pack._id}
-                className="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-150"
+                className="border-b dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-800 transition duration-150"
               >
                 <td className="px-5 py-3 font-medium">{pack.tourName}</td>
                 <td className="px-5 py-3">
