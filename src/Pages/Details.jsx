@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { NavLink, useLoaderData } from 'react-router';
 import {
    FaUserFriends,
   FaPhoneAlt,
@@ -13,7 +13,8 @@ import {
 const Details = () => {
     const packageData = useLoaderData()
     const {
-imageUrl,
+      _id,
+    imageUrl,
     tourName,
     guideName,
     guidePhoto,
@@ -91,9 +92,11 @@ imageUrl,
 
         {/* Book Now Button */}
         <div className="pt-2">
-          <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 rounded-xl hover:shadow-lg transition">
+         <NavLink to={`/booking/${_id}`}>
+           <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 rounded-xl hover:shadow-lg transition">
             Book Now
           </button>
+         </NavLink>
         </div>
       </div>
     </div>
