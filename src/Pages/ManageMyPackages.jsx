@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import PackRow from '../Components/PackRow';
 import Swal from 'sweetalert2';
 
+import { AuthContext } from '../Provider/AuthProvider';
+
 const ManageMyPackages = () => {
   const [allPackages, setAllPackages] = useState([]);
+  const {user} = useContext(AuthContext)
 
   useEffect(() => {
-    axios.get('http://localhost:3000/allPackages')
+    axios.get(`http://localhost:3000/myPackages?email=${user?.email}`)
       .then(res => setAllPackages(res.data))
       .catch(err => console.error(err));
-  }, []);
+  }, [user]);
+
+
 
   const handleDelete = (id) => {
+   
     Swal.fire({
       title: 'Are you sure?',
       text: 'You want to delete this package?',

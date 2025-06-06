@@ -63,12 +63,11 @@ const Router = createBrowserRouter([
 
         },
         {
-            path:'/managePackages',
+            path:'/managePackages/',
             element:<PrivateRoute>
                 <ManageMyPackages></ManageMyPackages>
             </PrivateRoute>,
-             loader: ()=> fetch('http://localhost:3000/allPackages'),
-            
+             loader:()=> fetch(`http://localhost:3000/allPackages`)    
 
         },
         {

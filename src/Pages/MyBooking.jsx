@@ -3,9 +3,10 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
+import Loading from '../Components/Loading';
 
 const MyBooking = () => {
-  const { user } = useContext(AuthContext);
+  const { user ,loading} = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
@@ -17,6 +18,9 @@ const MyBooking = () => {
     }
     
   }, [user]);
+  if(loading){
+  return <Loading></Loading>
+}
   console.log(bookings)
 
   return (

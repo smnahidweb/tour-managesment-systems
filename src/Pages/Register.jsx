@@ -44,7 +44,7 @@ const Register = () => {
         console.log(user)
 
         Swal.fire({
-          title: 'Account Created Successfully!',
+          title: `Congratulations Account Created Successfully!`,
           icon: 'success',
           confirmButtonColor: '#16a34a',
           confirmButtonText: 'Continue',
