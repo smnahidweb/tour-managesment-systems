@@ -111,7 +111,7 @@ const handleStatusUpdate = (bookingId) => {
         className={
           booking.status === 'Completed'
             ? 'bg-gray-400 text-white px-5 py-2 rounded-md shadow-md cursor-not-allowed'
-            : 'bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 transition-all duration-300 text-white px-5 py-2 rounded-md shadow-md'
+            : 'bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 transition-all duration-300 text-white px-5 py-2 rounded-md shadow-md btn'
         }
       >
         {booking.status === 'Completed' ? 'Confirmed' : 'Confirm'}

@@ -7,6 +7,17 @@ import Swal from 'sweetalert2';
 const Booking = () => {
     const {user} = useContext(AuthContext)
     const tour = useLoaderData();
+
+    const handleBookCount = (id)=>{
+      axios.patch(`http://localhost:3000/allPackages/${id}/increment`)
+      .then(res =>{
+        console.log(res.data)
+      })
+      .catch(error =>{
+        console.log(error)
+      })
+    }
+
     const handleBooking = (e) =>{
          e.preventDefault();
     const form = e.target;
@@ -24,11 +35,14 @@ const Booking = () => {
       bookingDate, 
       specialNote,
       status: "pending",
+    
+
     };
     axios.post('http://localhost:3000/bookings',bookingData)
     .then(res =>{
         console.log(res.data)
          if(res.data.insertedId){
+          handleBookCount(tour._id)
                 Swal.fire({
                                 title: `Congratulation ${user?.displayName} Booking added Successfully`,
                                 icon: "success",
@@ -40,6 +54,7 @@ const Booking = () => {
     })
 
     }
+    
     return (
        <div>
   <div className="bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 max-w-xl mx-auto">
@@ -125,7 +140,7 @@ const Booking = () => {
       </div>
 
       {/* Submit */}
-      <button
+      <button 
         type="submit" 
         className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition duration-300"
       >

@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLoaderData } from 'react-router';
+import { NavLink, useLoaderData, useNavigate } from 'react-router';
 import {
    FaUserFriends,
   FaPhoneAlt,
@@ -9,8 +9,11 @@ import {
   FaPlaneDeparture,
   FaPlaneArrival,
 } from 'react-icons/fa';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const Details = () => {
+  const navigate = useNavigate();
     const packageData = useLoaderData()
     const {
       _id,
@@ -28,7 +31,22 @@ const Details = () => {
     destination,
 
     } = packageData
+    console.log(bookingCount)
 
+  //  const handleBookingCount = async(id)=>{
+
+  //   const res = await axios.post(`http://localhost:3000/allPackages/${id}`,{
+  //     packagesId : _id
+  //   })
+  //   if(res.data.updatedCount>0){
+  //     Swal.fire({
+  //               title: `First step Successfully!`,
+  //               icon: 'success',
+  //               confirmButtonColor: '#16a34a',
+  //               confirmButtonText: 'Continue',
+  //             });
+  //   }
+  //  }
     return (
          <div className="bg-white mt-12 mb-12 dark:bg-gray-900 rounded-2xl overflow-hidden shadow-xl transition hover:scale-[1.02] duration-300 border border-gray-200 dark:border-gray-700">
       {/* Image Banner */}
@@ -93,7 +111,7 @@ const Details = () => {
         {/* Book Now Button */}
         <div className="pt-2">
          <NavLink to={`/booking/${_id}`}>
-           <button className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 rounded-xl hover:shadow-lg transition">
+           <button  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 rounded-xl hover:shadow-lg transition">
             Book Now
           </button>
          </NavLink>

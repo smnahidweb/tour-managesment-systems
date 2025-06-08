@@ -38,16 +38,27 @@ const FeaturedCard = ({data}) => {
           </p>
         </div>
 
-         <div className="flex items-center gap-3 mb-3">
-          <img
-            src={guidePhoto}
-            alt={guideName}
-            className="w-10 h-10 rounded-full border"
-          />
-          <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
-            {guideName}
-          </p>
-        </div>
+          <div className="flex flex-col gap-3 mb-4">
+  <p className="text-sm text-gray-600 dark:text-gray-400 font-semibold uppercase tracking-wide">
+ 
+  </p>
+  <div className="flex items-center gap-4">
+    <img
+      src={guidePhoto}
+      alt={`Guide: ${guideName}`}
+      className="w-12 h-12 rounded-full border-2 border-green-600 shadow-sm object-cover"
+    />
+    <div>
+      <p className="text-base font-semibold text-gray-800 dark:text-gray-200">
+        {guideName}
+      </p>
+      <p className="text-sm text-gray-500 dark:text-gray-400">
+        Tour Guide
+      </p>
+    </div>
+  </div>
+</div>
+
 
         {/* Duration & Departure */}
         <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-3">
