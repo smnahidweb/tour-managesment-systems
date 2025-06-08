@@ -18,6 +18,7 @@ import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Details from '../Pages/Details';
 import Booking from '../Pages/Booking';
 import Update from '../Pages/Update';
+import Error from '../Components/Error';
 
 const Router = createBrowserRouter([
   {
@@ -95,6 +96,10 @@ const Router = createBrowserRouter([
        
     ]
   },
+  {
+    path:'*',
+    Component:Error
+  }
 ]);
 
 

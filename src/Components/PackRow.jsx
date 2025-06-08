@@ -35,7 +35,7 @@ const PackRow = ({ pack, handleDelete }) => {
         <NavLink to={`/update/${pack._id}`}>
           <button
             title="Edit Package"
-            className="text-blue-600 hover:text-blue-800 transition cursor-pointer"
+            className="text-green-600 hover:text-blue-800 transition cursor-pointer mr-2"
           >
             <FaEdit size={20} />
           </button>

@@ -75,7 +75,7 @@ const handleSignOut = ()=>{
       </div>
 
       {/* Navbar End */}
-      <div className="navbar-end flex items-center gap-4 pr-4">
+      <div className="navbar-end flex items-center gap-4 pr-4 ">
         {
           user && <>
           
@@ -87,9 +87,9 @@ const handleSignOut = ()=>{
               className="w-10 h-10 rounded-full border-2 border-green-500 cursor-pointer"
             />
             {openDropdown && (
-              <div className="absolute right-0 mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg border rounded-lg z-50 p-4 space-y-2">
+              <div className="absolute right-0 mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg border-green-500 rounded-lg z-50 p-4 space-y-2">
                 <p className="font-semibold text-gray-800 dark:text-white">{user.displayName}</p>
-                <hr />
+                <hr className='text-green-700' />
                 <NavLink
                   to="/addPackage"
                   className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900"
