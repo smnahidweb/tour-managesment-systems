@@ -1,14 +1,31 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { MdOutlineAddBox } from "react-icons/md";
 import { FiPackage } from "react-icons/fi";
 import { FaSignOutAlt } from "react-icons/fa";
+import { Moon, Sun } from 'lucide-react';
 import Swal from 'sweetalert2';
 const Navbar = () => {
   const logo = 'https://i.ibb.co/pjzbmxcf/tour.jpg';
   const {user,Logout} = useContext(AuthContext)
    const [openDropdown, setOpenDropdown] = useState(false);
+   const [theme, setTheme] = useState(
+    localStorage.getItem('theme')
+      ? localStorage.getItem('theme')
+      : window.matchMedia('(prefers-color-scheme: light)').matches
+      ? 'light'
+      : 'dark'
+  );
+  
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const handleThemeToggle = (e) => {
+    setTheme(e.target.checked ? 'dark' : 'light');
+  };
 
 const handleSignOut = ()=>{
     Logout().then(()=>{
@@ -76,6 +93,30 @@ const handleSignOut = ()=>{
 
       {/* Navbar End */}
       <div className="navbar-end flex items-center gap-4 pr-4 ">
+
+
+
+<label className="cursor-pointer w-14 h-8 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center px-1 relative">
+          <input
+            type="checkbox"
+            checked={theme === 'dark'}
+            onChange={handleThemeToggle}
+            className="sr-only"
+          />
+          <div
+            className={`absolute w-6 h-6 bg-white dark:bg-yellow-400 rounded-full shadow-md transform transition-transform duration-300 ${
+              theme === 'dark' ? 'translate-x-6' : 'translate-x-0'
+            }`}
+          />
+          <div className="absolute left-1 text-gray-600 dark:text-white">
+            <Sun size={16} />
+          </div>
+          <div className="absolute right-1 text-gray-600 dark:text-yellow-300">
+            <Moon size={16} />
+          </div>
+        </label>
+
+
         {
           user && <>
           
