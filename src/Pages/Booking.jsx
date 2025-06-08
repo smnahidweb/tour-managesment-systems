@@ -1,12 +1,13 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const Booking = () => {
     const {user} = useContext(AuthContext)
     const tour = useLoaderData();
+      const navigate = useNavigate();
 
     const handleBookCount = (id)=>{
       axios.patch(`http://localhost:3000/allPackages/${id}/increment`)
@@ -47,6 +48,7 @@ const Booking = () => {
                                 title: `Congratulation ${user?.displayName} Booking added Successfully`,
                                 icon: "success",
                                 draggable: true })
+             navigate('/myBooking')
             }
     })
     .catch(error =>{

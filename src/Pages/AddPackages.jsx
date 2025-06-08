@@ -2,9 +2,11 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const AddPackages = () => {
     const {user} = useContext(AuthContext)
+    const navigate = useNavigate()
     // console.log(user.displayName,user.photoURL)
     const handleAddPackages = (e) =>{
         e.preventDefault();
@@ -21,7 +23,9 @@ const AddPackages = () => {
                         title: "Packages added Successfully",
                         icon: "success",
                         draggable: true })
+                        navigate('/managePackages')
     }
+    
 })
 .catch(error=>{
     console.log(error)
@@ -129,7 +133,7 @@ const AddPackages = () => {
           <label className="block mb-1 font-semibold">Guide Name</label>
           <input
             name="guideName"
-            // defaultValue={user?.displayName}
+            defaultValue={user?.displayName}
             type="text"
             placeholder="Full name of the guide"
             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-600 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 transition-all duration-300"

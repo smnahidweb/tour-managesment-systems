@@ -1,18 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import AllPackagesCard from './AllPackagesCard';
+import { FiSearch } from "react-icons/fi";
 
 const AllPackages = () => {
-    const allPackages = useLoaderData()
-    console.log(allPackages)
+    const allPackages = useLoaderData();
+    const [tours, setTours] = useState([]);
+    const [keyword, setKeyword] = useState('');
+    
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const convertedKeyword = keyword.toLowerCase();
+        const result = allPackages.filter(tour =>
+            tour.destination?.toLowerCase().includes(convertedKeyword) ||
+            tour.tourName?.toLowerCase().includes(convertedKeyword)
+        );
+        setTours(result);
+        
+    };
+
+    
+    const dataToShow = tours.length > 0 ? tours : allPackages;
+
     return (
         <div>
-          <h2 className='text-green-600 font-bold text-center text-4xl mt-12 mb-12'>All Packages</h2>
-          <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12'>
-            {
-                allPackages.map(pack => <AllPackagesCard key={pack._id} pack = {pack} ></AllPackagesCard>)
-            }
-          </div>
+            {/* Search Bar */}
+            <div className="w-full flex justify-end px-4">
+                <form onSubmit={handleSearch} className="relative mt-4 w-full max-w-sm flex">
+                    {/* Search Input */}
+                    <div className="relative w-full">
+                        <input
+                            type="text"
+                            onChange={(e) => setKeyword(e.target.value)}
+                            name="search"
+                            placeholder="e.g.,Cox Adventure"
+                            className="w-full pl-10 pr-4 py-2 rounded-l-lg border border-gray-300 dark:border-gray-700 
+                              bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 
+                              placeholder-gray-400 dark:placeholder-gray-500 
+                              focus:outline-none focus:ring-1 focus:ring-green-600 transition-all duration-300"
+                        />
+                        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 text-lg" />
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                        type="submit"
+                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r-lg transition duration-300"
+                    >
+                        Search
+                    </button>
+                </form>
+            </div>
+
+            {/* Title */}
+            <h2 className='text-green-600 font-bold text-center text-4xl mt-12 mb-12'>All Packages</h2>
+            
+
+            {/* Packages Grid */}
+            <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12'>
+                {
+                    dataToShow.map(pack => (
+                        <AllPackagesCard key={pack._id} pack={pack} />
+                    ))
+                }
+            </div>
         </div>
     );
 };

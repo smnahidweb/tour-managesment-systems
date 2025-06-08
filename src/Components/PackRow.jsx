@@ -43,7 +43,7 @@ const PackRow = ({ pack, handleDelete }) => {
         <button
           onClick={() => handleDelete(pack._id)}
           title="Delete Package"
-          className="text-red-600 hover:text-red-800 transition"
+          className="text-red-600 hover:text-red-800 transition cursor-pointer"
         >
           <FaTrash size={20} />
         </button>
