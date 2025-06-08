@@ -4,10 +4,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 import Loading from '../Components/Loading';
+import { NavLink } from 'react-router';
 
 const MyBooking = () => {
   const { user ,loading} = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
+  const [BookingName,setBookingName] = useState(false)
 
   useEffect(() => {
     if (user?.email) {
@@ -21,7 +23,51 @@ const MyBooking = () => {
   if(loading){
   return <Loading></Loading>
 }
-  console.log(bookings)
+const handleStatusUpdate = (bookingId) => {
+  console.log('Updating booking:', bookingId);
+
+  
+  axios
+    .patch(`http://localhost:3000/bookings/${bookingId}`, { status: 'Completed' })
+    .then((result) => {
+     
+      if (result.data.modifiedCount) {
+   
+        setBookings((previousBookings) => {
+          return previousBookings.map((book) => {
+            if (book._id === bookingId) {
+              return {
+                ...book,
+                status: 'Completed',
+              };
+            }
+            return book;
+          });
+        });
+
+      
+        Swal.fire({
+          title: 'Booking Completed!',
+          text: 'Congratulations! Your pending booking has been successfully marked as completed. We look forward to seeing you on the tour day!',
+          icon: 'success',
+          confirmButtonText: 'Okay',
+          confirmButtonColor: '#16a34a',
+        });
+
+        // 5. If you need to track this in state (e.g. to disable the button elsewhere):
+        setBookingName(true);
+      } else {
+       
+        Swal.fire('Notice', 'This booking was already completed.', 'info');
+      }
+    })
+    .catch((error) => {
+      console.error('Update failed:', error);
+      Swal.fire('Error', 'Could not update booking.', 'error');
+    });
+};
+
+
 
   return (
     <div className="p-4 md:p-8 max-w-6xl mx-auto">
@@ -42,8 +88,9 @@ const MyBooking = () => {
                 <th className="px-4 py-3">Departure Date</th>
                 <th className="px-4 py-3">From</th>
                 <th className="px-4 py-3">To</th>
-                <th className="px-4 py-3">Special Note</th>
-                <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3 hidden md:block lg:block">Special Note</th>
+                 <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">Book Now</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200 text-gray-800">
@@ -55,17 +102,20 @@ const MyBooking = () => {
                   <td className="px-4 py-3">{booking.departureDate}</td>
                   <td className="px-4 py-3">{booking.departureLocation}</td>
                   <td className="px-4 py-3">{booking.destination}</td>
-                  <td className="px-4 py-3">{booking.specialNote || "—"}</td>
+                  <td className="px-4 py-3 hidden md:block lg:block">{booking.specialNote || "—"}</td>
+                  <td className="px-4 py-3">{booking.status}</td>
                   <td className="px-4 py-3">
-                    <span
-                      className={`px-2 py-1 rounded-full text-xs font-semibold ${
-                        booking.status === "completed"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-yellow-100 text-yellow-700"
-                      }`}
-                    >
-                      {booking.status || "pending"}
-                    </span>
+                  <button
+        onClick={() => handleStatusUpdate(booking._id)}
+        disabled={booking.status === 'Completed'}
+        className={
+          booking.status === 'Completed'
+            ? 'bg-gray-400 text-white px-5 py-2 rounded-md shadow-md cursor-not-allowed'
+            : 'bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 transition-all duration-300 text-white px-5 py-2 rounded-md shadow-md'
+        }
+      >
+        {booking.status === 'Completed' ? 'Confirmed' : 'Confirm'}
+      </button>
                   </td>
                 </tr>
               ))}
