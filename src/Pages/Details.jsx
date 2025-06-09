@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, useLoaderData, useNavigate } from 'react-router';
+import { motion } from 'framer-motion';
 import {
    FaUserFriends,
   FaPhoneAlt,
@@ -98,9 +99,14 @@ const Details = () => {
         {/* Book Now Button */}
         <div className="pt-2">
          <NavLink to={`/booking/${_id}`}>
-           <button  className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 rounded-xl hover:shadow-lg transition">
-            Book Now
-          </button>
+           <motion.button
+                     whileHover={{ scale: 1.05 }}
+                     whileTap={{ scale: 0.95 }}
+                   
+                     className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:from-green-600 hover:to-teal-600 transition duration-300 w-full"
+                   >
+                    Book Now
+                   </motion.button>
          </NavLink>
         </div>
       </div>
