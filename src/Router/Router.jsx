@@ -19,6 +19,7 @@ import Details from '../Pages/Details';
 import Booking from '../Pages/Booking';
 import Update from '../Pages/Update';
 import Error from '../Components/Error';
+import ReviewForm from '../Components/ReviewForm';
 
 const Router = createBrowserRouter([
   {
@@ -92,6 +93,12 @@ const Router = createBrowserRouter([
                 <Update></Update>
             </PrivateRoute>,
               loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
+        },
+        {
+            path:'/reviews',
+            element:<PrivateRoute>
+                <ReviewForm></ReviewForm>
+            </PrivateRoute>
         }
        
     ]

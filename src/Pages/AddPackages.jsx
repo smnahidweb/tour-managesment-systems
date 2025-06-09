@@ -20,7 +20,7 @@ const AddPackages = () => {
        console.log(res.data)
       if(res.data.insertedId){
         Swal.fire({
-                        title: "Packages added Successfully",
+                        title: "Packages added successfully completed",
                         icon: "success",
                         draggable: true })
                         navigate('/managePackages')

@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import Banner from '../Components/Banner';
 import HomeFeatured from '../Components/HomeFeatured';
 import Loading from '../Components/Loading';
+import Reviews from '../Components/Reviews';
 
 const Home = () => {
   const FeaturedPromise = fetch('http://localhost:3000/allPackages').then(res => res.json())
@@ -11,6 +12,9 @@ const Home = () => {
          <Suspense fallback={ <Loading></Loading> }>
            <HomeFeatured FeaturedPromise = {FeaturedPromise} ></HomeFeatured>
          </Suspense>
+         <div>
+          <Reviews></Reviews>
+         </div>
         </div>
     );
 };

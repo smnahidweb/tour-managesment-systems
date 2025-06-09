@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
 import { MdOutlineAddBox } from "react-icons/md";
 import { FiPackage } from "react-icons/fi";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaStar } from "react-icons/fa";
 import { Moon, Sun } from 'lucide-react';
 import Swal from 'sweetalert2';
 const Navbar = () => {
@@ -142,6 +142,12 @@ const handleSignOut = ()=>{
                   className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900"
                 >
                   <FiPackage /> Manage My Packages
+                </NavLink>
+                <NavLink to={'/reviews'}>
+                  <button  className="flex items-center mt-2 mb-2 gap-2 cursor-pointer text-sm text-green-700 hover:text-green-900">
+                  <FaStar/>  Add Reviews
+                  </button>
+        
                 </NavLink>
                 <button
                   onClick={handleSignOut}
