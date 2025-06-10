@@ -1,28 +1,33 @@
-// MyBooking.jsx
+
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 import Loading from '../Components/Loading';
 import { NavLink } from 'react-router';
+import MyBookingChart from '../Components/MyBookingChart';
 
 const MyBooking = () => {
   const { user ,loading} = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [BookingName,setBookingName] = useState(false)
+  const [dataLoading, setDataLoading] = useState(true);
+ 
+ 
 
   useEffect(() => {
     if (user?.email) {
       axios
         .get(`http://localhost:3000/myBookings?email=${user.email}`)
-        .then((res) => setBookings(res.data));
+        .then((res) => {
+          setBookings(res.data)
+          setDataLoading(false)
+        });
         
     }
     
   }, [user]);
-  if(loading){
-  return <Loading></Loading>
-}
+ 
 const handleStatusUpdate = (bookingId) => {
   console.log('Updating booking:', bookingId);
 
@@ -66,7 +71,10 @@ const handleStatusUpdate = (bookingId) => {
       Swal.fire('Error', 'Could not update booking.', 'error');
     });
 };
-
+ if(loading || dataLoading){
+  return <Loading></Loading>
+}
+ 
 
 
   return (
@@ -74,9 +82,12 @@ const handleStatusUpdate = (bookingId) => {
       <h2 className="text-3xl font-bold mb-6 text-center text-green-700">
         My Bookings
       </h2>
+      <div>
+        <MyBookingChart></MyBookingChart>
+      </div>
 
       {bookings.length === 0 ? (
-        <p className="text-center text-gray-500">No bookings found.</p>
+        <p className="text-center text-gray-500">No Booking Yet</p>
       ) : (
         <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-md">
           <table className="min-w-full divide-y divide-gray-200 bg-white text-sm text-left">
