@@ -8,7 +8,18 @@ const HomeFeatured = ({FeaturedPromise}) => {
     const slicedData = FeaturedData.slice(0,6);
     return (
         <div>
-            <h2 className='text-green-600 font-bold text-center text-4xl mt-12 mb-12'>Featured Packages</h2>
+          <div className="text-center my-12 px-4 max-w-3xl mx-auto">
+  <h2 className="text-4xl font-extrabold text-green-600 mb-2">
+    Explore Our Featured Tour Packages
+  </h2>
+  <p className="text-xl text-gray-700 dark:text-gray-300 font-medium mb-2">
+    Handpicked journeys for unforgettable memories.
+  </p>
+  <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
+    From serene hills to vibrant beaches, our featured packages are designed to offer the perfect mix of adventure, relaxation, and culture. Discover the tours that travelers love the most.
+  </p>
+</div>
+
             <div className='grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-12'>
                 {
                    slicedData.map(data => <FeaturedCard key={data._id} data = {data} ></FeaturedCard>)

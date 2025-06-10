@@ -78,7 +78,14 @@ const handleLogin = (e) => {
                  <div>
             <div className="min-h-screen flex items-center justify-center  px-4">
   <div className="w-full max-w-md  p-8 rounded-2xl shadow-xl border border-gray-200">
-    <h2 className="text-2xl font-bold text-green-700 mb-6 text-center">Login</h2>
+   <div className="text-center mb-8">
+  <h2 className="text-3xl font-extrabold text-green-700 mb-2">Welcome Back</h2>
+  <p className="text-lg text-gray-700 dark:text-gray-300 font-medium">
+    Sign in to your account
+  </p>
+  
+</div>
+
 
     <form  onSubmit={handleLogin} className="space-y-5">
    

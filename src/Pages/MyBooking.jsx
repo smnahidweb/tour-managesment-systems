@@ -79,9 +79,16 @@ const handleStatusUpdate = (bookingId) => {
 
   return (
     <div className="p-4 md:p-8 max-w-6xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-center text-green-700">
-        My Bookings
-      </h2>
+      <div className="text-center my-12 px-4 max-w-2xl mx-auto">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-green-700 mb-2">
+    My Bookings
+  </h2>
+  <p className="text-lg text-gray-700 dark:text-gray-300 font-medium mb-1">
+    Your Travel Plans in One Place
+  </p>
+  
+</div>
+
       <div>
         <MyBookingChart></MyBookingChart>
       </div>

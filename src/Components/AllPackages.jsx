@@ -53,7 +53,18 @@ const AllPackages = () => {
             </div>
 
             {/* Title */}
-            <h2 className='text-green-600 font-bold text-center text-4xl mt-12 mb-12'>All Packages</h2>
+          <div className="text-center my-12 px-4 max-w-3xl mx-auto">
+  <h2 className="text-4xl font-extrabold text-green-600 mb-2">
+    Browse All Tour Packages
+  </h2>
+  <p className="text-xl text-gray-700 dark:text-gray-300 font-medium mb-2">
+    A journey for every dream and destination.
+  </p>
+  <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
+    Discover all our travel packages crafted with care — whether you seek mountains, beaches, or cultural escapes. There's something special waiting for everyone.
+  </p>
+</div>
+
             
 
             {/* Packages Grid */}

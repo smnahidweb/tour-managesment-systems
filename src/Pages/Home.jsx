@@ -4,6 +4,8 @@ import HomeFeatured from '../Components/HomeFeatured';
 import Loading from '../Components/Loading';
 import Reviews from '../Components/Reviews';
 import AboutCard from '../Components/AboutCard';
+import AboutGuide from '../Components/AboutGuide';
+import Statistics from '../Components/Statistics';
 
 const Home = () => {
   const FeaturedPromise = fetch('http://localhost:3000/allPackages').then(res => res.json())
@@ -16,8 +18,14 @@ const Home = () => {
          <div>
           <Reviews></Reviews>
          </div>
-         <div>
+         <div className='mb-10'>
+          <AboutGuide></AboutGuide>
+         </div>
+         <div className='mb-10'>
           <AboutCard></AboutCard>
+         </div>
+         <div>
+          <Statistics > </Statistics>
          </div>
         </div>
     );
