@@ -47,6 +47,7 @@ useEffect( ()=>{
 
 
 },[] )
+console.log(user)
 
 
 

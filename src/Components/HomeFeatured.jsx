@@ -28,8 +28,8 @@ const HomeFeatured = ({FeaturedPromise}) => {
 
            <div >
              <NavLink to={'/allPackages'}>
-              <button className="
-  w-full mb-10 rounded-full text-white font-semibold py-2 cursor-pointer
+              <button className=" flex justify-center items-center
+  btn-wide mb-10 rounded-full text-white font-semibold py-2 cursor-pointer
   bg-gradient-to-r from-green-400 via-green-500 to-green-600
   hover:from-green-500 hover:via-green-600 hover:to-green-700
   shadow-lg hover:shadow-xl

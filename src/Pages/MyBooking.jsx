@@ -13,12 +13,16 @@ const MyBooking = () => {
   const [BookingName,setBookingName] = useState(false)
   const [dataLoading, setDataLoading] = useState(true);
  
- 
+ console.log('Access Token', user.accessToken)
 
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/myBookings?email=${user.email}`)
+        .get(`http://localhost:3000/myBookings?email=${user.email}`,{
+          headers:{
+            authorization:`Bearer ${user?.accessToken}`
+          }
+        })
         .then((res) => {
           setBookings(res.data)
           setDataLoading(false)
@@ -89,9 +93,9 @@ const handleStatusUpdate = (bookingId) => {
   
 </div>
 
-      <div>
+      {/* <div>
         <MyBookingChart></MyBookingChart>
-      </div>
+      </div> */}
 
       {bookings.length === 0 ? (
         <p className="text-center text-gray-500">No Booking Yet</p>

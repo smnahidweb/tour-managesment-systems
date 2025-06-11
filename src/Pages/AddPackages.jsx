@@ -145,7 +145,7 @@ const AddPackages = () => {
           <label className="block mb-1 font-semibold">Guide Photo URL</label>
           <input
             name="guidePhoto"
-            // defaultValue={}
+            defaultValue={user?.photoURL}
             type="text"
             placeholder="Paste image URL"
             className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:border-green-600 dark:bg-gray-800 dark:border-gray-700 dark:placeholder-gray-400 transition-all duration-300"

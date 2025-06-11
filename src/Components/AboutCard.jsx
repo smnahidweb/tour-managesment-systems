@@ -17,7 +17,7 @@ const features = [
 ];
     return (
         <div>
-             <section className="bg-green-50 py-20 px-6 md:px-16">
+             <section className=" py-20 px-6 md:px-16">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
         
         {/* Left: Image */}

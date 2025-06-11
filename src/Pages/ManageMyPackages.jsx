@@ -10,7 +10,11 @@ const ManageMyPackages = () => {
   const {user} = useContext(AuthContext)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/myPackages?email=${user?.email}`)
+    axios.get(`http://localhost:3000/myPackages?email=${user?.email}`,{
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`
+      }
+    })
       .then(res => setAllPackages(res.data))
       .catch(err => console.error(err));
   }, [user]);
