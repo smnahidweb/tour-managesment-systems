@@ -1,12 +1,93 @@
-# React + Vite
+#  TourNest - Client (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the client-side of the **TourNest Travel Booking System**, built with React, Tailwind CSS, and Firebase. It enables travelers to explore and book tours and lets tour owners manage listings efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Live URL
 
-## Expanding the ESLint configuration
+ [Live Client](https://tour-booking-system-fa219.web.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+##  Purpose
+
+TourNest’s frontend provides a seamless and professional UI for users to interact with the platform—whether they’re booking tours, writing reviews, or managing their packages.
+
+---
+
+##  Tech Stack
+- **React.js** – Core UI library
+- **React Router** – Application routing
+- **Tailwind CSS** – Utility-first styling
+- **@tailwindcss/vite** – Tailwind + Vite integration
+- **Framer Motion** – Animations
+- **Swiper.js** – Review/testimonial carousel
+- **AOS (Animate on Scroll)** – Scroll-based animations
+- **Firebase Authentication** – User login/signup
+- **Axios** – API requests
+- **Lottie-react** – Lottie animations
+- **Lucide-react** – Icon set
+- **React CountUp** – Number animations
+- **React Icons** – Popular icon packs
+- **React DOM** – React DOM rendering
+- **Recharts** – Chart visualization
+- **React Intersection Observer** – Visibility detection (e.g. autoplay triggers)
+- **SweetAlert2** – Alert modals
+
+---
+
+---
+
+##  Features
+
+-  Explore all tours with filtering
+- CRUD Operation like add packages,delete,update
+-  View individual tour details
+-  Book a tour (requires login)
+-  Leave reviews
+-  Authenticated routes for dashboard
+-  Light/Dark theme toggle
+- Fully responsive UI
+- Auto slider for reviews (pause on hover)
+
+---
+
+## NPM Packages Used
+
+| Package           | Purpose                        |
+|------------------|--------------------------------|
+| react            | Core UI library                |
+| react-router-dom | SPA routing                    |
+| tailwindcss      | Utility-first styling          |
+| framer-motion    | Animation library              |
+| swiper           | Sliders/carousels              |
+| react-icons      | Icon library                   |
+| react-toastify   | Toast notification             |
+| firebase         | Authentication                 |
+
+---
+
+##  Installation
+
+```bash
+# Navigate to the client folder
+cd client
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
+
+## 👤 Author
+
+**S M Nahid Hasan**  
+[Student of Programming Hero]()
+[BinaryWave Academy (YouTube)](https://youtu.be/EJYIh55cGwg?si=sXvEi-ZLNzR0neZ-)  
+[GitHub](https://github.com/smnahidweb)
+
+---
+
+
+ **Thank you for exploring the TreePlant!**
