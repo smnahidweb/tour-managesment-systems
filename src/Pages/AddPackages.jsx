@@ -15,7 +15,13 @@ const AddPackages = () => {
          const data = Object.fromEntries(formData.entries());
          console.log(data)
     
-         axios.post('http://localhost:3000/allPackages',data)
+         axios.post('http://localhost:3000/allPackages',data,{
+
+          headers:{
+            authorization:`Bearer ${user?.accessToken}`
+          }
+
+         })
        .then(res => {
        console.log(res.data)
       if(res.data.insertedId){
@@ -35,8 +41,8 @@ const AddPackages = () => {
     }
     return (
         <div>
-          <div className="max-w-5xl mx-auto p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
-      <h2 className="text-3xl font-bold text-center text-green-700 dark:text-green-300 mb-8">
+          <div className="max-w-5xl mx-auto p-8   rounded-2xl shadow-lg">
+      <h2 className="text-3xl font-bold text-center text-[var(--HEADING-TITLE-TEXT)] mb-8">
         Add New Tour Package
       </h2>
 

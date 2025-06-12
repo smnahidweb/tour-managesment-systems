@@ -4,7 +4,7 @@ import { NavLink } from 'react-router';
 
 const PackRow = ({ pack, handleDelete }) => {
   return (
-    <tr className="border-b dark:border-gray-700 hover:bg-green-100 dark:hover:bg-gray-800 transition duration-150">
+    <tr className="border-b dark:border-gray-700  dark:hover:bg-gray-800 transition duration-150">
       <td className="px-5 py-3 font-medium">{pack.tourName}</td>
       <td className="px-5 py-3">
         <img

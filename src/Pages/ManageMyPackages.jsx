@@ -50,7 +50,7 @@ const ManageMyPackages = () => {
       <h2 className="text-2xl font-bold text-green-500 mb-4 text-center">
         Manage Your Added Packages
       </h2>
-      <div className="overflow-x-auto rounded-xl shadow-lg bg-white dark:bg-gray-900">
+      <div className="overflow-x-auto rounded-xl shadow-lg ">
         <table className="min-w-full table-auto text-sm text-left">
           <thead className="bg-green-500 dark:bg-gray-800 text-white uppercase">
             <tr>
@@ -65,7 +65,7 @@ const ManageMyPackages = () => {
               <th className="px-5 py-3">Actions</th>
             </tr>
           </thead>
-          <tbody className="text-gray-700 divide-y divide-gray-200 dark:text-gray-100">
+          <tbody className="text-[var(--TEXT-COLOR)] divide-y divide-gray-200 dark:text-gray-100">
             {allPackages.map(pack => (
               <PackRow
                 key={pack._id}

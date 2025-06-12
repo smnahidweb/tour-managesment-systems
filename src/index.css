@@ -1,4 +1,30 @@
 @import "tailwindcss";
 @plugin "daisyui";
-/* @tailwind utilities;
-@import "tailwindcss/preflight" */
+[ data-theme = "dark"]{
+    --TEXT-COLOR:#ffffff;
+    --HEADING-TITLE-TEXT:#0dac57;
+
+}
+
+[ data-theme = "light"]{
+    --TEXT-COLOR:black;
+     --HEADING-TITLE-TEXT:#0dac57;
+
+}
+
+[ data-theme = "light"]{
+    --TEXT-TABLE-COLOR:black;
+   
+
+}
+[ data-theme = "light"]{
+    --TEXT-TABLE-COLOR:white;
+   
+
+}
+
+
+a.active {
+  color: rgb(5, 237, 5);
+  text-decoration: underline;
+}

@@ -9,13 +9,13 @@ const HomeFeatured = ({FeaturedPromise}) => {
     return (
         <div>
           <div className="text-center my-12 px-4 max-w-3xl mx-auto">
-  <h2 className="text-4xl font-extrabold text-green-600 mb-2">
+  <h2 className="text-4xl font-extrabold  mb-2 text-[var(--HEADING-TITLE-TEXT)]">
     Explore Our Featured Tour Packages
   </h2>
-  <p className="text-xl text-gray-700 dark:text-gray-300 font-medium mb-2">
+  <p className="text-xl text-[var(--HEADING-TITLE-TEXT)]   font-medium mb-2">
     Handpicked journeys for unforgettable memories.
   </p>
-  <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
+  <p className=" text-sm md:text-base">
     From serene hills to vibrant beaches, our featured packages are designed to offer the perfect mix of adventure, relaxation, and culture. Discover the tours that travelers love the most.
   </p>
 </div>

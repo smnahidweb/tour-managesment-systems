@@ -68,7 +68,7 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center">
         
 
-      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-3xl overflow-hidden bg-white dark:bg-gray-800">
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-3xl overflow-hidden  dark:bg-gray-800">
      
         {/* Left: Lottie Animation */}
         <div className="hidden md:flex items-center justify-center  p-10">
@@ -77,11 +77,11 @@ const Register = () => {
    
         {/* Right: Register Form */}
         <div className="p-8 sm:p-12">
-         <h2 className="text-3xl font-bold text-green-700 dark:text-green-400 mb-6 text-center">Create an Account</h2>
+         <h2 className="text-3xl font-bold text-[var(--HEADING-TITLE-TEXT)] mb-6 text-center">Create an Account</h2>
           <form onSubmit={handleRegister} className="space-y-5">
             {/* Name */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Full Name</label>
+              <label className="block text-sm font-medium text-[var(--TEXT-COLOR)] mb-1">Full Name</label>
               <input
                 type="text"
                 name="name"
@@ -93,7 +93,7 @@ const Register = () => {
 
             {/* Email */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Email Address</label>
+              <label className="block text-sm font-medium text-[var(--TEXT-COLOR)] mb-1">Email Address</label>
               <input
                 type="email"
                 name="email"
@@ -105,7 +105,7 @@ const Register = () => {
 
             {/* Photo URL */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Photo URL</label>
+              <label className="block text-sm font-medium text-[var(--TEXT-COLOR)] mb-1">Photo URL</label>
               <input
                 type="url"
                 name="photo"
@@ -117,7 +117,7 @@ const Register = () => {
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">Password</label>
+              <label className="block text-sm font-medium text-[var(--TEXT-COLOR)]mb-1">Password</label>
               <input
                 type="password"
                 name="password"
@@ -139,7 +139,7 @@ const Register = () => {
           </form>
 
           {/* Redirect to Login */}
-          <p className="text-center text-sm text-gray-600 dark:text-gray-300 mt-6">
+          <p className="text-center text-sm text-[var(--TEXT-COLOR)] mt-6">
             Have an Account?{' '}
             <NavLink className="text-green-600 hover:underline font-medium" to="/login">
               Log in

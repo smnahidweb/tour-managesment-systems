@@ -34,11 +34,11 @@ const features = [
         </div>
 
         {/* Right: Content */}
-        <div className="w-full md:w-1/2 text-gray-800">
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-gray-900">
+        <div className="w-full md:w-1/2 text-green-600">
+          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight  text-[var(--HEADING-TITLE-TEXT)]">
             Our Journey Memorable <br /> Adventures Worldwide
           </h2>
-          <p className="mt-4 text-base text-gray-600">
+          <p className="mt-4 text-base text-[var(--TEXT-COLOR)]">
             We offer carefully curated destinations and tours that capture the true essence of location, ensuring you experience. Our attraction pass save you more than buying individual tickets for your tour package system.
           </p>
 

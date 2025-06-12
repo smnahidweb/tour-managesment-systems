@@ -143,12 +143,12 @@ const handleSignOut = ()=>{
                 >
                   <FiPackage /> Manage My Packages
                 </NavLink>
-                <NavLink to={'/reviews'}>
+                {/* <NavLink to={'/reviews'}>
                   <button  className="flex items-center mt-2 mb-2 gap-2 cursor-pointer text-sm text-green-700 hover:text-green-900">
                   <FaStar/>  Add Reviews
                   </button>
         
-                </NavLink>
+                </NavLink> */}
                 <button
                   onClick={handleSignOut}
                   className="flex items-center gap-2 btn text-sm text-red-600 hover:text-red-800"

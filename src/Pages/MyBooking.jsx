@@ -84,10 +84,10 @@ const handleStatusUpdate = (bookingId) => {
   return (
     <div className="p-4 md:p-8 max-w-6xl mx-auto">
       <div className="text-center my-12 px-4 max-w-2xl mx-auto">
-  <h2 className="text-3xl md:text-4xl font-extrabold text-green-700 mb-2">
+  <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--HEADING-TITLE-TEXT)] mt-2 mb-4">
     My Bookings
   </h2>
-  <p className="text-lg text-gray-700 dark:text-gray-300 font-medium mb-1">
+  <p className="text-lg text-[var(--TEXT-COLOR)] font-medium mb-1">
     Your Travel Plans in One Place
   </p>
   
@@ -101,7 +101,7 @@ const handleStatusUpdate = (bookingId) => {
         <p className="text-center text-gray-500">No Booking Yet</p>
       ) : (
         <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-md">
-          <table className="min-w-full divide-y divide-gray-200 bg-white text-sm text-left">
+          <table className="min-w-full divide-y divide-gray-200  text-sm text-left">
             <thead className="bg-green-600 text-white">
               <tr>
                 <th className="px-4 py-3">Tour Name</th>
@@ -115,9 +115,9 @@ const handleStatusUpdate = (bookingId) => {
                 <th className="px-4 py-3">Book Now</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200 text-gray-800">
+            <tbody className="divide-y divide-gray-200 text-[var(--TEXT-COLOR)]">
               {bookings.map((booking) => (
-                <tr key={booking._id} className="hover:bg-green-100">
+                <tr key={booking._id} className="">
                   <td className="px-4 py-3 font-medium">{booking.tourName}</td>
                   <td className="px-4 py-3">{booking?.buyerName}</td>
                   <td className="px-4 py-3">{booking.contactNo}</td>

@@ -24,13 +24,13 @@ const AboutGuide = () => {
     return (
         <div>
 <div className="text-center my-10 px-4 max-w-3xl mx-auto">
-  <h3 className="text-4xl font-extrabold text-green-600 mb-2">
+  <h3 className="text-4xl font-extrabold  text-[var(--HEADING-TITLE-TEXT)] mb-2">
     Meet Our Expert Tour Guides
   </h3>
-  <p className="text-xl text-gray-700 dark:text-gray-300 font-medium mb-3">
+  <p className="text-xl text-[var(--TEXT-COLOR)] dark:text-gray-300 font-medium mb-3">
     Passionate. Experienced. Trusted.
   </p>
-  <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
+  <p className="text-[var(--TEXT-COLOR)] dark:text-gray-400 text-sm md:text-base">
     Our tour guides are not just professionals—they're storytellers, adventurers, and local experts who make your journey safe, enriching, and unforgettable. Get to know the people who bring your travel dreams to life.
   </p>
 </div>

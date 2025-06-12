@@ -5,16 +5,16 @@ import { FaBoxOpen, FaCheckCircle, FaClock } from "react-icons/fa";
 
 const Statistics = () => {
   const [allPackages, setAllPackages] = useState([]);
-  const [myBookings, setMyBookings] = useState([]);
+  const [myBookings, setMyBookings] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const bookingsRes = await axios('http://localhost:3000/bookings');
+        const bookingsRes = await axios('http://localhost:3000/bookingsCount');
         const packagesRes = await axios('http://localhost:3000/allPackages');
 
-        setMyBookings(bookingsRes.data);
+        setMyBookings(bookingsRes.data.total);
         setAllPackages(packagesRes.data);
         setLoading(false); // All data loaded
       } catch (err) {
@@ -34,7 +34,7 @@ const Statistics = () => {
     },
     {
       label: "Total Bookings",
-      value: myBookings.length,
+      value: myBookings,
       icon: <FaCheckCircle />,
       bg: "from-blue-400 to-blue-600",
     },
@@ -49,10 +49,10 @@ const Statistics = () => {
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl text-center font-extrabold text-green-700 mb-6">
+        <h2 className="text-4xl text-center font-extrabold text-[var(--HEADING-TITLE-TEXT)] mb-6">
           Highlights of TourNest
         </h2>
-        <p className="text-center text-gray-800 mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-[var(--TEXT-COLOR)] mb-12 max-w-2xl mx-auto">
           Discover our performance metrics and the trust our users have in our travel platform.
         </p>
 

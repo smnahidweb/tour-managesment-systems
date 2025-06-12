@@ -49,7 +49,7 @@ const Reviews = () => {
   <h3 className="text-xl md:text-2xl font-semibold text-green-600 mb-2">
     Real Feedback from Our Happy Travelers Worldwide
   </h3>
-  <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg">
+  <p className=" text-[var(--TEXT-COLOR)] text-base md:text-lg">
     Our attraction passes save you more than buying individual tickets for your tour package system.
     Our attraction passes save you.
   </p>

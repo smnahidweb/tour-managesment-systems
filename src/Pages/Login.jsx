@@ -67,7 +67,7 @@ const handleLogin = (e) => {
          <div className="min-h-screen flex items-center justify-center">
                 
         
-              <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-3xl overflow-hidden bg-white dark:bg-gray-800">
+              <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-3xl overflow-hidden ">
              
                 {/* Left: Lottie Animation */}
                 <div className="hidden md:flex items-center justify-center  p-10">
@@ -79,8 +79,8 @@ const handleLogin = (e) => {
             <div className="min-h-screen flex items-center justify-center  px-4">
   <div className="w-full max-w-md  p-8 rounded-2xl shadow-xl border border-gray-200">
    <div className="text-center mb-8">
-  <h2 className="text-3xl font-extrabold text-green-700 mb-2">Welcome Back</h2>
-  <p className="text-lg text-gray-700 dark:text-gray-300 font-medium">
+  <h2 className="text-3xl font-extrabold text-[var(--HEADING-TITLE-TEXT)] mb-2">Welcome Back</h2>
+  <p className="text-lg text-[var(--TEXT-COLOR)] font-medium">
     Sign in to your account
   </p>
   
@@ -128,10 +128,10 @@ const handleLogin = (e) => {
    
     <button onClick={handleLoginWithGoogle}
       type="button"
-      className="w-full cursor-pointer flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-100 transition"
+      className="w-full cursor-pointer flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2  transition"
     >
     
-     <FaGoogle size={24} /> <span className="text-gray-700 font-medium">Continue with Google</span>
+     <FaGoogle size={24} /> <span className="text-[var(--TEXT-COLOR)] font-medium">Continue with Google</span>
     </button>
     <p className='py-2 mt-2'>Dont HaVe an Account? <NavLink className="text-green-500" to="/register">Register</NavLink> </p>
   </div>
