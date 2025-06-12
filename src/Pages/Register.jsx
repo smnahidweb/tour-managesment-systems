@@ -1,12 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import Lottie from "lottie-react";
 import registerAnimation from "../assets/lottie/register.json";
 import { AuthContext } from '../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import { getAuth } from 'firebase/auth';
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const Register = () => {
+   useEffect(() => {
+                      AOS.init({
+                        duration: 1000,
+                        once: true,
+                        offset: 120,          
+                        easing: 'ease-in-out' 
+                      });
+                    }, []);
     const { CreateUser, UpdateProfileInfo, setUser ,user} = useContext(AuthContext);
     const[passError,setPassError] = useState('')
     const navigate = useNavigate();
@@ -65,7 +74,7 @@ const Register = () => {
    
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center" data-aos="fade-up">
         
 
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-3xl overflow-hidden  dark:bg-gray-800">

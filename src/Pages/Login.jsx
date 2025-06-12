@@ -1,12 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Lottie from "lottie-react";
 import { FaGoogle } from 'react-icons/fa';
 import registerAnimation from "../assets/lottie/login.json";
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const Login = () => {
+   useEffect(() => {
+                        AOS.init({
+                          duration: 1000,
+                          once: true,
+                          offset: 120,          
+                          easing: 'ease-in-out' 
+                        });
+                      }, []);
  const {Login,LoginWithGoogle,user,setUser,SignInWithGoogle} = useContext(AuthContext)
  const navigate = useNavigate()
   const location = useLocation();
@@ -64,7 +73,7 @@ const handleLogin = (e) => {
     }
 
     return (
-         <div className="min-h-screen flex items-center justify-center">
+         <div className="min-h-screen flex items-center justify-center" data-aos="fade-up">
                 
         
               <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 shadow-2xl rounded-3xl overflow-hidden ">

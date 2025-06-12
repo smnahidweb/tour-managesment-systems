@@ -10,7 +10,7 @@ const ManageMyPackages = () => {
   const {user} = useContext(AuthContext)
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/myPackages?email=${user?.email}`,{
+    axios.get(`https://booking-management-system-server-si.vercel.app/myPackages?email=${user?.email}`,{
       headers: {
         authorization: `Bearer ${user?.accessToken}`
       }
@@ -33,7 +33,11 @@ const ManageMyPackages = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/allPackages/${id}`)
+        axios.delete(`https://booking-management-system-server-si.vercel.app/allPackages/${id}`,{
+          headers:{
+            authorization: `Bearer ${user?.accessToken}`
+          }
+        })
           .then(res => {
             if (res.data.deletedCount > 0) {
               setAllPackages(prev => prev.filter(pack => pack._id !== id));

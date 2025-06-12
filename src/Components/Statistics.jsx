@@ -2,8 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import CountUp from 'react-countup';
 import { FaBoxOpen, FaCheckCircle, FaClock } from "react-icons/fa";
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const Statistics = () => {
+     useEffect(() => {
+                          AOS.init({
+                            duration: 1000,
+                            once: true,
+                            offset: 120,          
+                            easing: 'ease-in-out' 
+                          });
+                        }, []);
   const [allPackages, setAllPackages] = useState([]);
   const [myBookings, setMyBookings] = useState();
   const [loading, setLoading] = useState(true);
@@ -11,8 +20,8 @@ const Statistics = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const bookingsRes = await axios('http://localhost:3000/bookingsCount');
-        const packagesRes = await axios('http://localhost:3000/allPackages');
+        const bookingsRes = await axios('https://booking-management-system-server-si.vercel.app/bookingsCount');
+        const packagesRes = await axios('https://booking-management-system-server-si.vercel.app/allPackages');
 
         setMyBookings(bookingsRes.data.total);
         setAllPackages(packagesRes.data);
@@ -47,7 +56,7 @@ const Statistics = () => {
   ];
 
   return (
-    <section className="py-16">
+    <section className="py-16" data-aos="fade-up">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl text-center font-extrabold text-[var(--HEADING-TITLE-TEXT)] mb-6">
           Highlights of TourNest

@@ -15,7 +15,7 @@ const AddPackages = () => {
          const data = Object.fromEntries(formData.entries());
          console.log(data)
     
-         axios.post('http://localhost:3000/allPackages',data,{
+         axios.post('https://booking-management-system-server-si.vercel.app/allPackages',data,{
 
           headers:{
             authorization:`Bearer ${user?.accessToken}`

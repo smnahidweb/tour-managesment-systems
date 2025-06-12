@@ -30,7 +30,7 @@ const MyBookingChart = () => {
 
   useEffect(() => {
     if (user?.email) {
-      axios(`http://localhost:3000/myBookings?email=${user.email}`)
+      axios(`https://booking-management-system-server-si.vercel.app/myBookings?email=${user.email}`)
         .then((res) => setMyBookings(res.data))
         .catch((error) => {
           console.error(error);

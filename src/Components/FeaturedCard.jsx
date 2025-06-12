@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router';
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const FeaturedCard = ({data}) => {
+  useEffect(() => {
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 120,          
+        easing: 'ease-in-out' 
+      });
+    }, []);
     const {
 
 
@@ -16,10 +26,11 @@ const FeaturedCard = ({data}) => {
     price
 
     } = data
+    
 
     return (
         <div>
-             <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+             <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300"   data-aos="fade-up">
       <img
         src={imageUrl}
         

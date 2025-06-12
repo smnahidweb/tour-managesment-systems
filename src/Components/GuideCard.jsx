@@ -1,7 +1,16 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
 const GuideCard = ({single}) => {
+   useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          offset: 120,          
+          easing: 'ease-in-out' 
+        });
+      }, []);
     const {
         guideName,
         guidePhoto,
@@ -9,7 +18,7 @@ const GuideCard = ({single}) => {
 
     } = single
     return (
-       <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700">
+       <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700" data-aos="fade-up">
       
       {/* Header background */}
       <div className="h-36 bg-gradient-to-tr from-green-600 to-blue-500"></div>

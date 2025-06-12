@@ -24,7 +24,7 @@ const ReviewForm = () => {
 
     console.log(reviewData);
    
-    axios.post('http://localhost:3000/reviews',reviewData)
+    axios.post('https://booking-management-system-server-si.vercel.app/reviews',reviewData)
     .then(res =>{
         if(res.data.insertedId){
                 Swal.fire({

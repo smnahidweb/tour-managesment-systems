@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, useLoaderData, useNavigate } from 'react-router';
+import { NavLink, useLoaderData} from 'react-router';
 import { motion } from 'framer-motion';
 import {
    FaUserFriends,
@@ -10,7 +10,7 @@ import {
   FaPlaneDeparture,
   FaPlaneArrival,
 } from 'react-icons/fa';
-import axios from 'axios';
+
 import Swal from 'sweetalert2';
 
 const Details = () => {

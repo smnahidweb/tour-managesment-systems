@@ -10,7 +10,7 @@ const Booking = () => {
       const navigate = useNavigate();
 
     const handleBookCount = (id)=>{
-      axios.patch(`http://localhost:3000/allPackages/${id}/increment`)
+      axios.patch(`https://booking-management-system-server-si.vercel.app/allPackages/${id}/increment`)
       .then(res =>{
         console.log(res.data)
       })
@@ -39,7 +39,7 @@ const Booking = () => {
     
 
     };
-    axios.post('http://localhost:3000/bookings',bookingData)
+    axios.post('https://booking-management-system-server-si.vercel.app/bookings',bookingData)
     .then(res =>{
         console.log(res.data)
          if(res.data.insertedId){

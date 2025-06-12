@@ -42,7 +42,7 @@ const Router = createBrowserRouter([
         {
             path:'/allPackages',
             Component:AllPackages,
-            loader: ()=> fetch('http://localhost:3000/allPackages'),
+            loader: ()=> fetch('https://booking-management-system-server-si.vercel.app/allPackages'),
             hydrateFallbackElement:<Loading></Loading>
         },
         {
@@ -61,7 +61,7 @@ const Router = createBrowserRouter([
             element:<PrivateRoute>
                 <MyBooking></MyBooking>
             </PrivateRoute>,
-            // loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
+            // loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
 
         },
         {
@@ -69,7 +69,7 @@ const Router = createBrowserRouter([
             element:<PrivateRoute>
                 <ManageMyPackages></ManageMyPackages>
             </PrivateRoute>,
-             loader:()=> fetch(`http://localhost:3000/allPackages`)    
+             loader:()=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages`)    
 
         },
         {
@@ -78,21 +78,21 @@ const Router = createBrowserRouter([
                 <PrivateRoute>
                     <Details></Details>
                 </PrivateRoute>,
-            loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
+            loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
         },
         {
             path:'/booking/:id',
             element:<PrivateRoute>
                 <Booking></Booking>
             </PrivateRoute>,
-             loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
+             loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
         },
         {
             path:'update/:id',
             element:<PrivateRoute>
                 <Update></Update>
             </PrivateRoute>,
-              loader:({params})=> fetch(`http://localhost:3000/allPackages/${params.id}`)
+              loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
         },
         {
             path:'/reviews',

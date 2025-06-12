@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Update = () => {
+  const{user} = useContext(AuthContext)
     const data = useLoaderData();
     console.log(data)
     const {
@@ -29,7 +31,11 @@ const Update = () => {
      const updatedData = Object.fromEntries(formData.entries());
      console.log(updatedData)
     
-   axios.put(`http://localhost:3000/allPackages/${_id}`,updatedData)
+   axios.put(`https://booking-management-system-server-si.vercel.app/allPackages/${_id}`,updatedData,{
+    headers:{
+            authorization:`Bearer ${user?.accessToken}`
+          }
+   })
    .then(res =>{
     console.log(res.data)
     if(res.data.modifiedCount){
@@ -46,8 +52,8 @@ const Update = () => {
 }
     return (
         <div>
-          <div className="max-w-5xl mx-auto p-8 bg-white dark:bg-gray-900 rounded-2xl shadow-lg">
-      <h2 className="text-3xl font-bold text-center text-green-700 dark:text-green-300 mb-8">
+          <div className="max-w-5xl mx-auto p-8  dark:bg-gray-900 rounded-2xl shadow-lg">
+      <h2 className="text-3xl font-bold text-center  dark:text-green-300 mb-8 text-[var(--HEADING-TITLE-TEXT)] ">
        Update Tour Package
       </h2>
 

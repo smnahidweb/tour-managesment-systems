@@ -6,8 +6,17 @@ import { AuthContext } from '../Provider/AuthProvider';
 import Loading from '../Components/Loading';
 import { NavLink } from 'react-router';
 import MyBookingChart from '../Components/MyBookingChart';
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const MyBooking = () => {
+   useEffect(() => {
+                    AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 120,          
+                      easing: 'ease-in-out' 
+                    });
+                  }, []);
   const { user ,loading} = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [BookingName,setBookingName] = useState(false)
@@ -18,7 +27,7 @@ const MyBooking = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:3000/myBookings?email=${user.email}`,{
+        .get(`https://booking-management-system-server-si.vercel.app/myBookings?email=${user.email}`,{
           headers:{
             authorization:`Bearer ${user?.accessToken}`
           }
@@ -37,7 +46,7 @@ const handleStatusUpdate = (bookingId) => {
 
   
   axios
-    .patch(`http://localhost:3000/bookings/${bookingId}`, { status: 'Completed' })
+    .patch(`https://booking-management-system-server-si.vercel.app/bookings/${bookingId}`, { status: 'Completed' })
     .then((result) => {
      
       if (result.data.modifiedCount) {
@@ -82,7 +91,7 @@ const handleStatusUpdate = (bookingId) => {
 
 
   return (
-    <div className="p-4 md:p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto" data-aos="fade-up">
       <div className="text-center my-12 px-4 max-w-2xl mx-auto">
   <h2 className="text-3xl md:text-4xl font-extrabold text-[var(--HEADING-TITLE-TEXT)] mt-2 mb-4">
     My Bookings
@@ -100,7 +109,7 @@ const handleStatusUpdate = (bookingId) => {
       {bookings.length === 0 ? (
         <p className="text-center text-gray-500">No Booking Yet</p>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-md">
+        <div className="overflow-x-auto rounded-lg border border-gray-300 shadow-md" data-aos="fade-up">
           <table className="min-w-full divide-y divide-gray-200  text-sm text-left">
             <thead className="bg-green-600 text-white">
               <tr>

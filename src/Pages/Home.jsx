@@ -8,7 +8,7 @@ import AboutGuide from '../Components/AboutGuide';
 import Statistics from '../Components/Statistics';
 
 const Home = () => {
-  const FeaturedPromise = fetch('http://localhost:3000/allPackages').then(res => res.json())
+  const FeaturedPromise = fetch('https://booking-management-system-server-si.vercel.app/allPackages').then(res => res.json())
     return (
         <div>
           <Banner></Banner>

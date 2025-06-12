@@ -2,8 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useLoaderData } from 'react-router';
 import AllPackagesCard from './AllPackagesCard';
 import { FiSearch } from "react-icons/fi";
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const AllPackages = () => {
+     useEffect(() => {
+                AOS.init({
+                  duration: 1000,
+                  once: true,
+                  offset: 120,          
+                  easing: 'ease-in-out' 
+                });
+              }, []);
     const loadedData = useLoaderData();
 
     const packagesArray = Array.isArray(loadedData) ? loadedData : loadedData?.data || [];
@@ -34,7 +43,7 @@ const AllPackages = () => {
     return (
         <div>
             {/* Search Bar */}
-            <div className="w-full flex justify-end px-4">
+            <div className="w-full flex justify-end px-4" data-aos="fade-up">
                 <form onSubmit={handleSearch} className="relative mt-4 w-full max-w-sm flex">
                     <div className="relative w-full">
                         <input
@@ -60,7 +69,7 @@ const AllPackages = () => {
             </div>
 
             {/* Title */}
-            <div className="text-center my-12 px-4 max-w-3xl mx-auto">
+            <div className="text-center my-12 px-4 max-w-3xl mx-auto" data-aos="fade-up">
                 <h2 className="text-4xl font-extrabold text-[var(--HEADING-TITLE-TEXT)] mb-2">
                     Browse All Tour Packages
                 </h2>

@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { NavLink } from 'react-router';
 import { motion } from 'framer-motion';
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const AboutCard = () => {
+   useEffect(() => {
+          AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 120,          
+            easing: 'ease-in-out' 
+          });
+        }, []);
     const img = 'https://i.ibb.co/Q3N6hRPH/couple-family-traveling-together.jpg';
     const img1 = 'https://i.ibb.co/qLTxyDrB/nahid.jpg'
     const img2 = 'https://i.ibb.co/bj4tjDgv/lawer10.jpg'
@@ -17,7 +27,7 @@ const features = [
 ];
     return (
         <div>
-             <section className=" py-20 px-6 md:px-16">
+             <section className=" py-20 px-6 md:px-16" data-aos="fade-up">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
         
         {/* Left: Image */}

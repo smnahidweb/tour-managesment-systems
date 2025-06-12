@@ -1,12 +1,21 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import GuideCard from './GuideCard';
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const AboutGuide = () => {
+  useEffect(() => {
+            AOS.init({
+              duration: 1000,
+              once: true,
+              offset: 120,          
+              easing: 'ease-in-out' 
+            });
+          }, []);
     const [guide,setGuide] = useState([])
 
    useEffect(() => {
-  axios.get('http://localhost:3000/allPackages')
+  axios.get('https://booking-management-system-server-si.vercel.app/allPackages')
     .then(res => {
       const unique = Array.from(
         new Map(
@@ -23,7 +32,7 @@ const AboutGuide = () => {
 
     return (
         <div>
-<div className="text-center my-10 px-4 max-w-3xl mx-auto">
+<div className="text-center my-10 px-4 max-w-3xl mx-auto" data-aos="fade-up">
   <h3 className="text-4xl font-extrabold  text-[var(--HEADING-TITLE-TEXT)] mb-2">
     Meet Our Expert Tour Guides
   </h3>
