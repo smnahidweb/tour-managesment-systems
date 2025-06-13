@@ -6,6 +6,7 @@ import Reviews from '../Components/Reviews';
 import AboutCard from '../Components/AboutCard';
 import AboutGuide from '../Components/AboutGuide';
 import Statistics from '../Components/Statistics';
+import ShorTours from '../Components/ShorTours';
 
 const Home = () => {
   const FeaturedPromise = fetch('https://booking-management-system-server-si.vercel.app/allPackages').then(res => res.json())
@@ -15,6 +16,9 @@ const Home = () => {
          <Suspense fallback={ <Loading></Loading> }>
            <HomeFeatured FeaturedPromise = {FeaturedPromise} ></HomeFeatured>
          </Suspense>
+         <div>
+          <ShorTours></ShorTours>
+         </div>
          <div>
           <Reviews></Reviews>
          </div>
