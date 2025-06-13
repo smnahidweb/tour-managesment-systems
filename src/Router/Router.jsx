@@ -20,6 +20,8 @@ import Booking from '../Pages/Booking';
 import Update from '../Pages/Update';
 import Error from '../Components/Error';
 import ReviewForm from '../Components/ReviewForm';
+import Terms from '../Pages/Terms';
+import PrivacyPolicy from '../Pages/PrivacyPolicy';
 
 const Router = createBrowserRouter([
   {
@@ -99,6 +101,13 @@ const Router = createBrowserRouter([
             element:<PrivateRoute>
                 <ReviewForm></ReviewForm>
             </PrivateRoute>
+        },
+        {
+            path:'/terms',
+            element:<Terms></Terms>
+        },{
+            path:'/privacy',
+            element:<PrivacyPolicy></PrivacyPolicy>
         }
        
     ]

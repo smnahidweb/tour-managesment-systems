@@ -45,13 +45,13 @@ const Statistics = () => {
       label: "Total Bookings",
       value: myBookings,
       icon: <FaCheckCircle />,
-      bg: "from-blue-400 to-blue-600",
+      bg: "from-green-400 to-green-600",
     },
     {
       label: "Years of Service",
       value: 15,
       icon: <FaClock />,
-      bg: "from-purple-400 to-purple-600",
+      bg: "from-green-400 to-green-600",
     },
   ];
 

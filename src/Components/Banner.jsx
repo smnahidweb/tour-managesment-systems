@@ -55,7 +55,7 @@ const Banner = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate('/allPackages')}
-          className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:from-green-600 hover:to-teal-600 transition duration-300"
+          className="bg-green-600 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:from-green-600 hover:to-teal-600 transition cursor-pointer duration-300"
         >
           Explore Packages
         </motion.button>

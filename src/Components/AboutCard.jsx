@@ -78,7 +78,7 @@ const features = [
         
           className="bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:from-green-600 hover:to-teal-600 transition duration-300"
         >
-          Explore Packages
+          Explore TourNest
         </motion.button>
             </NavLink>
             <div className="flex items-center -space-x-3">

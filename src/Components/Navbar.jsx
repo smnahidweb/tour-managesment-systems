@@ -31,7 +31,7 @@ const handleSignOut = ()=>{
     Logout().then(()=>{
  
       Swal.fire({
-            title: `Hi,${user.email} LogOut Successfully`,
+            title: `Hi,${user?.displayName} LogOut Successfully`,
             icon: "success",
             draggable: true
           });

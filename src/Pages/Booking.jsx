@@ -59,7 +59,7 @@ const Booking = () => {
     
     return (
        <div>
-  <div className="bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 max-w-xl mx-auto">
+  <div className=" shadow-lg rounded-2xl p-6 max-w-xl mx-auto">
     <h2 className="text-2xl font-bold text-center text-green-600 mb-6">Book This Tour</h2>
     <form onSubmit={handleBooking} className="space-y-4">
 
@@ -70,7 +70,7 @@ const Booking = () => {
           type="text"
           value={tour.tourName}
           readOnly
-          className="w-full bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg border border-gray-300 
+          className="w-full  px-4 py-2 rounded-lg border border-gray-300 
             dark:border-gray-700 dark:placeholder-gray-400 
             focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-200 transition-all duration-300"
         />
@@ -83,7 +83,7 @@ const Booking = () => {
           type="text"
           value={tour.price}
           readOnly
-          className="w-full bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg border border-gray-300 
+          className="w-full px-4 py-2 rounded-lg border border-gray-300 
             dark:border-gray-700 dark:placeholder-gray-400 
             focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-200 transition-all duration-300"
         />
@@ -97,7 +97,7 @@ const Booking = () => {
             type="text"
             value={user?.displayName}
             readOnly
-            className="w-full bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg border border-gray-300 
+            className="w-full  px-4 py-2 rounded-lg border border-gray-300 
               dark:border-gray-700 dark:placeholder-gray-400 
               focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
           />
@@ -108,7 +108,7 @@ const Booking = () => {
             type="email"
             value={user?.email}
             readOnly
-            className="w-full bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg border border-gray-300 
+            className="w-full  px-4 py-2 rounded-lg border border-gray-300 
               dark:border-gray-700 dark:placeholder-gray-400 
               focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
           />
@@ -122,7 +122,7 @@ const Booking = () => {
           type="date"
           name="bookingDate"
           defaultValue={new Date().toISOString().split("T")[0]}
-          className="w-full bg-gray-100 dark:bg-gray-800 px-4 py-2 rounded-lg border border-gray-300 
+          className="w-full   px-4 py-2 rounded-lg border border-gray-300 
             dark:border-gray-700 dark:placeholder-gray-400 
             focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
         />
@@ -135,8 +135,8 @@ const Booking = () => {
           name="specialNote"
           rows="3"
           placeholder="Write any special request..."
-          className="w-full px-4 py-2 border rounded-lg dark:bg-gray-800 border-gray-300 
-            dark:border-gray-700 dark:placeholder-gray-400 
+          className="w-full px-4 py-2 border rounded-lg  border-gray-300 
+             dark:placeholder-gray-400 
             focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
         ></textarea>
       </div>
