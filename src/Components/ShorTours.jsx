@@ -17,7 +17,7 @@ const ShorTours = () => {
   <h2 className="text-4xl font-extrabold mb-2 text-[var(--HEADING-TITLE-TEXT)]">
     Explore Our Short Tours
   </h2>
-  <p className="text-xl font-medium mb-2">
+  <p className="text-xl  mb-2">
     Perfect quick getaways lasting 1 to 2 days — ideal for busy travelers seeking refreshing escapes.
   </p>
 </div>

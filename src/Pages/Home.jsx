@@ -7,6 +7,7 @@ import AboutCard from '../Components/AboutCard';
 import AboutGuide from '../Components/AboutGuide';
 import Statistics from '../Components/Statistics';
 import ShorTours from '../Components/ShorTours';
+import MidLevelTour from '../Components/MidLevelTour';
 
 const Home = () => {
   const FeaturedPromise = fetch('https://booking-management-system-server-si.vercel.app/allPackages').then(res => res.json())
@@ -18,6 +19,9 @@ const Home = () => {
          </Suspense>
          <div>
           <ShorTours></ShorTours>
+         </div>
+         <div>
+          <MidLevelTour></MidLevelTour>
          </div>
          <div>
           <Reviews></Reviews>
