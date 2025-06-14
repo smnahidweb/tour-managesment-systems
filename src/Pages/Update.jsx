@@ -3,9 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
-
+import { useNavigate } from 'react-router';
 const Update = () => {
   const{user} = useContext(AuthContext)
+  const navigate = useNavigate()
     const data = useLoaderData();
     const [tour,setTour] = useState([])
     const {id} = useParams();
@@ -60,6 +61,7 @@ console.log(data)
                                 title: " Package Updated Successfully",
                                 icon: "success",
                                 draggable: true })
+                                navigate('/managePackages')
     }
    })
    .catch(error =>{

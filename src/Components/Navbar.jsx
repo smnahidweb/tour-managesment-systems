@@ -7,7 +7,7 @@ import { FaSignOutAlt, FaStar } from "react-icons/fa";
 import { Moon, Sun } from 'lucide-react';
 import Swal from 'sweetalert2';
 const Navbar = () => {
-  const logo = 'https://i.ibb.co/pjzbmxcf/tour.jpg';
+  const logo = 'https://i.ibb.co/YFn9CvwS/logo2.jpg';
   const {user,Logout} = useContext(AuthContext)
    const [openDropdown, setOpenDropdown] = useState(false);
    const [theme, setTheme] = useState(

@@ -31,7 +31,7 @@ const AllPackages = () => {
         setTours(result);
     };
 
-    // 🔁 Optional: reset search results if keyword is cleared
+
     useEffect(() => {
         if (!keyword) {
             setTours([]);
@@ -50,7 +50,7 @@ const AllPackages = () => {
                             type="text"
                             onChange={(e) => setKeyword(e.target.value)}
                             name="search"
-                            placeholder="e.g., Cox Adventure"
+                            placeholder="e.g., Saint Martin"
                             className="w-full pl-10 pr-4 py-2 rounded-l-lg border border-gray-300 dark:border-gray-700 
                               bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 
                               placeholder-gray-400 dark:placeholder-gray-500 
@@ -61,7 +61,7 @@ const AllPackages = () => {
 
                     <button
                         type="submit"
-                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r-lg transition duration-300"
+                        className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-r-lg transition cursor-pointer duration-300"
                     >
                         Search
                     </button>
