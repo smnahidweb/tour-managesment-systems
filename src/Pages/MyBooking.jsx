@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 import Loading from '../Components/Loading';
 import { NavLink } from 'react-router';
-import MyBookingChart from '../Components/MyBookingChart';
+
 import 'aos/dist/aos.css';
 import AOS from 'aos';
 const MyBooking = () => {
@@ -46,7 +46,12 @@ const handleStatusUpdate = (bookingId) => {
 
   
   axios
-    .patch(`https://booking-management-system-server-si.vercel.app/bookings/${bookingId}`, { status: 'Completed' })
+    .patch(`https://booking-management-system-server-si.vercel.app/bookings/${bookingId}`, { status: 'Completed' },{
+      headers:{
+          authorization:`Bearer ${user?.accessToken}`
+
+      }
+    })
     .then((result) => {
      
       if (result.data.modifiedCount) {
@@ -72,7 +77,7 @@ const handleStatusUpdate = (bookingId) => {
           confirmButtonColor: '#16a34a',
         });
 
-        // 5. If you need to track this in state (e.g. to disable the button elsewhere):
+      
         setBookingName(true);
       } else {
        

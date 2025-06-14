@@ -5,7 +5,7 @@ import MidLevelCard from './MidLevelCard';
 const MidLevelTour = () => {
      const [midTours,setMidTours] = useState([])
         useEffect( ()=>{
-            axios('http://localhost:3000/mid-tour')
+            axios('https://booking-management-system-server-si.vercel.app/mid-tour')
             .then(result =>{
              setMidTours(result.data)
             })

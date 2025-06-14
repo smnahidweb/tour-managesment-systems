@@ -5,7 +5,7 @@ import ShortTourscard from './ShortTourscard';
 const ShorTours = () => {
     const [shortTours,setShortTours] = useState([])
     useEffect( ()=>{
-        axios('http://localhost:3000/tour-short')
+        axios('https://booking-management-system-server-si.vercel.app/tour-short')
         .then(result =>{
          setShortTours(result.data)
         })

@@ -24,7 +24,12 @@ const ReviewForm = () => {
 
     console.log(reviewData);
    
-    axios.post('https://booking-management-system-server-si.vercel.app/reviews',reviewData)
+    axios.post('https://booking-management-system-server-si.vercel.app/reviews',reviewData,{
+      headers:{
+          authorization:`Bearer ${user?.accessToken}`
+
+      }
+    })
     .then(res =>{
         if(res.data.insertedId){
                 Swal.fire({

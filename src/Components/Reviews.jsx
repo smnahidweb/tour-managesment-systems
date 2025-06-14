@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -6,17 +6,23 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import Reviewscard from './Reviewscard';
 import { useInView } from 'react-intersection-observer';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
+  const {user} = useContext(AuthContext)
   const swiperRef = useRef(null);
   const { ref, inView } = useInView({ threshold: 0.3 });
 
   useEffect(() => {
-    fetch('https://booking-management-system-server-si.vercel.app/reviews')
+    fetch('https://booking-management-system-server-si.vercel.app/reviews',{
+       headers:{
+            authorization:`Bearer ${user?.accessToken}`
+          }
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data));
-  }, []);
+  }, [user?.accessToken]);
 
   // Control autoplay when section enters or leaves viewport
   useEffect(() => {

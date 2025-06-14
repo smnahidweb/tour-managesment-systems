@@ -1,16 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useLoaderData, useNavigate, useParams } from 'react-router';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 const Booking = () => {
     const {user} = useContext(AuthContext)
-    const tour = useLoaderData();
+    // const tour = useLoaderData();
+    const [tour,setTour] = useState([]);
+
+  const {id} = useParams()
+   useEffect( ()=>{
+   axios(`https://booking-management-system-server-si.vercel.app/allPackages/${id}`,{
+     headers:{
+              authorization:`Bearer ${user?.accessToken}`
+            }
+   })
+   .then(result =>{
+    setTour(result.data)
+   })
+   .catch(error =>{
+    console.log(error)
+   })
+      } ,[id,user?.accessToken])
       const navigate = useNavigate();
 
     const handleBookCount = (id)=>{
-      axios.patch(`https://booking-management-system-server-si.vercel.app/allPackages/${id}/increment`)
+      axios.patch(`https://booking-management-system-server-si.vercel.app/allPackages/${id}/increment`,{
+         headers:{
+            authorization:`Bearer ${user?.accessToken}`
+          }
+      })
       .then(res =>{
         console.log(res.data)
       })
@@ -39,7 +59,12 @@ const Booking = () => {
     
 
     };
-    axios.post('https://booking-management-system-server-si.vercel.app/bookings',bookingData)
+    axios.post('https://booking-management-system-server-si.vercel.app/bookings',bookingData,{
+      headers:{
+          authorization:`Bearer ${user?.accessToken}`
+
+      }
+    })
     .then(res =>{
         console.log(res.data)
          if(res.data.insertedId){
@@ -69,10 +94,11 @@ const Booking = () => {
         <input
           type="text"
           value={tour.tourName}
+          
           readOnly
           className="w-full  px-4 py-2 rounded-lg border border-gray-300 
-            dark:border-gray-700 dark:placeholder-gray-400 
-            focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-200 transition-all duration-300"
+       
+            focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-200 transition-all duration-300" 
         />
       </div>
 
@@ -84,7 +110,7 @@ const Booking = () => {
           value={tour.price}
           readOnly
           className="w-full px-4 py-2 rounded-lg border border-gray-300 
-            dark:border-gray-700 dark:placeholder-gray-400 
+           
             focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-200 transition-all duration-300"
         />
       </div>
@@ -98,7 +124,7 @@ const Booking = () => {
             value={user?.displayName}
             readOnly
             className="w-full  px-4 py-2 rounded-lg border border-gray-300 
-              dark:border-gray-700 dark:placeholder-gray-400 
+          
               focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
           />
         </div>
@@ -109,7 +135,7 @@ const Booking = () => {
             value={user?.email}
             readOnly
             className="w-full  px-4 py-2 rounded-lg border border-gray-300 
-              dark:border-gray-700 dark:placeholder-gray-400 
+              
               focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
           />
         </div>
@@ -123,7 +149,7 @@ const Booking = () => {
           name="bookingDate"
           defaultValue={new Date().toISOString().split("T")[0]}
           className="w-full   px-4 py-2 rounded-lg border border-gray-300 
-            dark:border-gray-700 dark:placeholder-gray-400 
+            
             focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
         />
       </div>
@@ -136,7 +162,7 @@ const Booking = () => {
           rows="3"
           placeholder="Write any special request..."
           className="w-full px-4 py-2 border rounded-lg  border-gray-300 
-             dark:placeholder-gray-400 
+             
             focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition-all duration-300"
         ></textarea>
       </div>

@@ -47,7 +47,7 @@ const Register = () => {
         });
       })
       .then(() => {
-        // Set user using latest Firebase currentUser
+        
         const currentUser = auth.currentUser;
         setUser({ ...currentUser });
         console.log(user)

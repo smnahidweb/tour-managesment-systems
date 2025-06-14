@@ -4,10 +4,12 @@ import PackRow from '../Components/PackRow';
 import Swal from 'sweetalert2';
 
 import { AuthContext } from '../Provider/AuthProvider';
+import Loading from '../Components/Loading';
 
 const ManageMyPackages = () => {
   const [allPackages, setAllPackages] = useState([]);
-  const {user} = useContext(AuthContext)
+   const { user ,loading} = useContext(AuthContext);
+  const [dataLoading, setDataLoading] = useState(true);
 
   useEffect(() => {
     axios.get(`https://booking-management-system-server-si.vercel.app/myPackages?email=${user?.email}`,{
@@ -15,7 +17,10 @@ const ManageMyPackages = () => {
         authorization: `Bearer ${user?.accessToken}`
       }
     })
-      .then(res => setAllPackages(res.data))
+      .then(res =>{
+         setAllPackages(res.data)
+        setDataLoading(false)
+        })
       .catch(err => console.error(err));
   }, [user]);
 
@@ -48,39 +53,49 @@ const ManageMyPackages = () => {
       }
     });
   };
-
+ if(loading || dataLoading){
+  return <Loading></Loading>
+}
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold text-green-500 mb-4 text-center">
-        Manage Your Added Packages
-      </h2>
-      <div className="overflow-x-auto rounded-xl shadow-lg ">
-        <table className="min-w-full table-auto text-sm text-left">
-          <thead className="bg-green-500 dark:bg-gray-800 text-white uppercase">
-            <tr>
-              <th className="px-5 py-3">Tour Name</th>
-              <th className="px-5 py-3">Image</th>
-              <th className="px-5 py-3">Duration</th>
-              <th className="px-5 py-3">Price (৳)</th>
-              <th className="px-5 py-3">Route</th>
-              <th className="px-5 py-3">Departure</th>
-              <th className="px-5 py-3">Guide</th>
-              <th className="px-5 py-3">Contact</th>
-              <th className="px-5 py-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody className="text-[var(--TEXT-COLOR)] divide-y divide-gray-200 dark:text-gray-100">
-            {allPackages.map(pack => (
-              <PackRow
-                key={pack._id}
-                pack={pack}
-                handleDelete={handleDelete}
-              />
-            ))}
-          </tbody>
-        </table>
-      </div>
+   <div className="p-6">
+  <h2 className="text-2xl font-bold text-green-500 mb-4 text-center">
+    Manage Your Added Packages
+  </h2>
+
+  {allPackages.length === 0 ? (
+    <p className="text-red-500 text-center text-2xl font-semibold">
+      You haven't added any tour yet.
+    </p>
+  ) : (
+    <div className="overflow-x-auto rounded-xl shadow-lg">
+      <table className="min-w-full table-auto text-sm text-left">
+        <thead className="bg-green-500 dark:bg-gray-800 text-white uppercase">
+          <tr>
+            <th className="px-5 py-3">Tour Name</th>
+            <th className="px-5 py-3">Image</th>
+            <th className="px-5 py-3">Duration</th>
+            <th className="px-5 py-3">Price (৳)</th>
+            <th className="px-5 py-3">Route</th>
+            <th className="px-5 py-3">Departure</th>
+            <th className="px-5 py-3">Guide</th>
+            <th className="px-5 py-3">Contact</th>
+            <th className="px-5 py-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody className="text-[var(--TEXT-COLOR)] divide-y divide-gray-200 dark:text-gray-100">
+          {allPackages.map(pack => (
+            <PackRow
+              key={pack._id}
+              pack={pack}
+              handleDelete={handleDelete}
+            />
+          ))}
+        </tbody>
+      </table>
     </div>
+  )}
+</div>
+
   );
 };
 

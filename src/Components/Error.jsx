@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router';
-
+import 'aos/dist/aos.css';
+import AOS from 'aos';
 const Error = () => {
+     useEffect(() => {
+                        AOS.init({
+                          duration: 1000,
+                          once: true,
+                          offset: 120,          
+                          easing: 'ease-in-out' 
+                        });
+                      }, []);
     const error = "https://i.ibb.co/kgbb8PpR/error.jpg"
     return (
-        <div className=' mt-12 flex justify-center items-center flex-col '>
+        <div className=' mt-12 flex justify-center items-center flex-col ' data-aos="fade-up">
             <img src={error} alt="" />
             <div>
                 <NavLink to={"/"}>

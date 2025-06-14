@@ -46,9 +46,9 @@ const GuideCard = ({single}) => {
 
       {/* Social Icons */}
       <div className="px-8 pb-6 pt-3 flex justify-center space-x-6">
-        <FaFacebookF className="text-gray-500 dark:text-gray-400 hover:text-blue-600 cursor-pointer transition" size={20} />
-        <FaLinkedinIn className="text-gray-500 dark:text-gray-400 hover:text-blue-700 cursor-pointer transition" size={20} />
-        <FaTwitter className="text-gray-500 dark:text-gray-400 hover:text-blue-400 cursor-pointer transition" size={20} />
+       <a href="https://web.facebook.com/" target='_blank'> <FaFacebookF className="text-gray-500 dark:text-gray-400 hover:text-blue-600 cursor-pointer transition" size={20} /></a>
+       <a href="https://www.linkedin.com/" target='_blank'> <FaLinkedinIn className="text-gray-500 dark:text-gray-400 hover:text-blue-700 cursor-pointer transition" size={20} /></a>
+      <a href="https://x.com/" target='_blank'> <FaTwitter className="text-gray-500 dark:text-gray-400 hover:text-blue-400 cursor-pointer transition" size={20} /></a>
       </div>
     </div>
     );

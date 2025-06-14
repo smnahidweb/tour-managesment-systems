@@ -1,12 +1,27 @@
 import axios from 'axios';
-import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useContext, useEffect, useState } from 'react';
+import { useLoaderData, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Update = () => {
   const{user} = useContext(AuthContext)
     const data = useLoaderData();
+    const [tour,setTour] = useState([])
+    const {id} = useParams();
+    useEffect( ()=>{
+  axios(`https://booking-management-system-server-si.vercel.app/allPackages/${id}`,{
+     headers:{
+            authorization:`Bearer ${user?.accessToken}`
+          }
+  })
+  .then(res =>{
+    setTour(res.data)
+  })
+  .catch(error =>{
+    console.log(error)
+  })
+    },[id,user?.accessToken] )
     console.log(data)
     const {
   _id,
@@ -22,8 +37,10 @@ const Update = () => {
   guidePhoto,
   guideEmail,
   packageDetails
-} = data;
+} = tour;
+console.log(data)
  const handleUpdate = (e) =>{
+  
     e.preventDefault()
 
     const form = e.target;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {
   createBrowserRouter,
@@ -22,6 +22,7 @@ import Error from '../Components/Error';
 import ReviewForm from '../Components/ReviewForm';
 import Terms from '../Pages/Terms';
 import PrivacyPolicy from '../Pages/PrivacyPolicy';
+import { AuthContext } from '../Provider/AuthProvider';
 
 const Router = createBrowserRouter([
   {
@@ -80,21 +81,21 @@ const Router = createBrowserRouter([
                 <PrivateRoute>
                     <Details></Details>
                 </PrivateRoute>,
-            loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
+            // loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
         },
         {
             path:'/booking/:id',
             element:<PrivateRoute>
                 <Booking></Booking>
             </PrivateRoute>,
-             loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
+            //  loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
         },
         {
             path:'update/:id',
             element:<PrivateRoute>
                 <Update></Update>
             </PrivateRoute>,
-              loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
+            //   loader:({params})=> fetch(`https://booking-management-system-server-si.vercel.app/allPackages/${params.id}`)
         },
         {
             path:'/reviews',
