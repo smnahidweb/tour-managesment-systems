@@ -13,6 +13,7 @@ const Home = () => {
   const FeaturedPromise = fetch('https://booking-management-system-server-si.vercel.app/allPackages').then(res => res.json())
     return (
         <div>
+       
           <Banner></Banner>
          <Suspense fallback={ <Loading></Loading> }>
            <HomeFeatured FeaturedPromise = {FeaturedPromise} ></HomeFeatured>

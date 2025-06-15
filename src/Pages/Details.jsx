@@ -63,7 +63,7 @@ if(loading || dataLoading){
 
   
     return (
-     <div className="mt-12 mb-12 dark:bg-gray-900 rounded-2xl overflow-hidden shadow-xl transition hover:scale-[1.02] duration-300 border border-gray-200 dark:border-gray-700">
+     <div className="mt-12 mb-12  rounded-2xl overflow-hidden shadow-xl transition hover:scale-[1.02] duration-300 border border-gray-200 dark:border-gray-700">
   {/* Image Banner */}
   <div className="relative h-[400px]">
     <img

@@ -4,11 +4,15 @@ import { useLoaderData, useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../Provider/AuthProvider';
 import { useNavigate } from 'react-router';
+import Loading from '../Components/Loading';
+
 const Update = () => {
-  const{user} = useContext(AuthContext)
+  const{user,loading} = useContext(AuthContext)
   const navigate = useNavigate()
     const data = useLoaderData();
     const [tour,setTour] = useState([])
+    const [dataLoading,setDataLoading] = useState(true)
+    
     const {id} = useParams();
     useEffect( ()=>{
   axios(`https://booking-management-system-server-si.vercel.app/allPackages/${id}`,{
@@ -18,6 +22,7 @@ const Update = () => {
   })
   .then(res =>{
     setTour(res.data)
+    setDataLoading(false)
   })
   .catch(error =>{
     console.log(error)
@@ -69,8 +74,13 @@ console.log(data)
    })
 
 }
+if(loading || dataLoading){
+   return <Loading></Loading>
+}
+
     return (
         <div>
+          
           <div className="max-w-5xl mx-auto p-8  dark:bg-gray-900 rounded-2xl shadow-lg">
       <h2 className="text-3xl font-bold text-center  dark:text-green-300 mb-8 text-[var(--HEADING-TITLE-TEXT)] ">
        Update Tour Package
