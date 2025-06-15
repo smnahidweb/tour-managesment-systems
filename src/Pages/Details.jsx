@@ -14,9 +14,11 @@ import {
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import { AuthContext } from '../Provider/AuthProvider';
+import Loading from '../Components/Loading';
 
 const Details = () => {
-const{user} = useContext(AuthContext)
+const{user,loading} = useContext(AuthContext)
+const [dataLoading,setDataLoading] = useState(true)
 
     // const packageData = useLoaderData()
     const [packageData,setPackageData] = useState([])
@@ -29,6 +31,7 @@ const{user} = useContext(AuthContext)
  })
  .then(result =>{
   setPackageData(result.data)
+  setDataLoading(false)
  })
  .catch(error =>{
   console.log(error)
@@ -54,7 +57,9 @@ const{user} = useContext(AuthContext)
     } = packageData
     console.log(bookingCount)
 
-
+if(loading || dataLoading){
+   return <Loading></Loading>
+}
 
   
     return (
