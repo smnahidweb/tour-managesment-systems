@@ -43,12 +43,12 @@ const ReviewForm = () => {
   };
 
   return (
-    <form onSubmit={handleReviews} className="max-w-xl mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 space-y-6 mt-10">
+    <form onSubmit={handleReviews} className="max-w-xl mx-auto  shadow-lg rounded-2xl p-6 space-y-6 mt-10">
       <h2 className="text-2xl font-bold text-green-600 text-center">Submit Your Review</h2>
 
       {/* Customer Photo Upload */}
       <div>
-        <label className="block font-medium text-gray-800 dark:text-gray-200 mb-1">Customer Photo</label>
+        <label className="block font-medium text-[var(--TEXT-COLOR)] mb-1">Customer Photo</label>
         <label className="flex items-center gap-2 cursor-pointer text-sm text-gray-600 dark:text-gray-300">
           
           <input
@@ -63,7 +63,7 @@ const ReviewForm = () => {
 
       {/* Name */}
       <div>
-        <label className="block font-medium text-gray-800 dark:text-gray-200 mb-1">Your Name</label>
+        <label className="block font-medium text-[var(--TEXT-COLOR)] mb-1">Your Name</label>
         <input
           type="text"
           placeholder="S M Nahid Hasan"
@@ -76,7 +76,7 @@ const ReviewForm = () => {
 
       {/* Rating */}
       <div>
-        <label className="block font-medium text-gray-800 dark:text-gray-200 mb-1">Rating</label>
+        <label className="block font-medium text-[var(--TEXT-COLOR)] mb-1">Rating</label>
         <div className="flex gap-1">
           {[1, 2, 3, 4, 5].map((star) =>
             star <= rating ? (
@@ -99,7 +99,7 @@ const ReviewForm = () => {
 
       {/* Tour Name */}
       <div>
-        <label className="block font-medium text-gray-800 dark:text-gray-200 mb-1">Tour Name / Destination</label>
+        <label className="block font-medium text-[var(--TEXT-COLOR)] mb-1">Tour Name / Destination</label>
         <input
           type="text"
           placeholder="Sundarbans Adventure"
@@ -111,7 +111,7 @@ const ReviewForm = () => {
 
       {/* Feedback */}
       <div>
-        <label className="block font-medium text-gray-800 dark:text-gray-200 mb-1">Your Feedback</label>
+        <label className="block font-medium text-[var(--TEXT-COLOR)] mb-1">Your Feedback</label>
         <textarea
           rows="4"
           placeholder="Share your experience..."
@@ -123,11 +123,11 @@ const ReviewForm = () => {
 
       {/* Trip Date */}
       <div>
-        <label className="block font-medium text-gray-800 dark:text-gray-200 mb-1">Trip Date (optional)</label>
+        <label className="block font-medium text-[var(--TEXT-COLOR)] mb-1">Trip Date (optional)</label>
         <input
           type="date"
           name="date"
-          className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-600"
+          className=" cursor-pointer w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg   focus:outline-none focus:ring-2 focus:ring-green-600"
         />
       </div>
 
