@@ -70,7 +70,34 @@ TourNest’s frontend provides a seamless and professional UI for users to inter
 | firebase         | Authentication                 |
 
 ---
+📡 API Endpoints
+Base URL: https://tour-management-systems-server.vercel.app/
 
+📦 Packages
+Method	Endpoint	Description
+GET	/packages	Get all tour packages
+GET	/packages/:id	Get a tour package by ID
+POST	/packages	Add a new tour package
+PATCH	/packages/:id	Update a tour package by ID
+DELETE	/packages/:id	Delete a tour package by ID
+
+👤 Users
+Method	Endpoint	Description
+GET	/users	Get all users
+GET	/users/:email	Get user info by email
+POST	/users	Register or save a new user
+PATCH	/users/:id	Update user info or role
+
+📄 Bookings
+Method	Endpoint	Description
+GET	/bookings	Get all bookings
+GET	/bookings/:email	Get bookings of a specific user
+POST	/bookings	Create a new booking
+DELETE	/bookings/:id	Cancel or delete a booking
+
+🔐 Authentication
+Method	Endpoint	Description
+POST	/jwt	Get access token (JWT)
 ##  Installation
 
 ```bash
