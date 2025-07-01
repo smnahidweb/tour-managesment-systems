@@ -59,7 +59,7 @@ const ShortTourscard = ({sTour}) => {
       </div>
 
       {/* Guide Info */}
-      <div className="flex flex-col gap-3 mb-4">
+      {/* <div className="flex flex-col gap-3 mb-4">
         <div className="flex items-center gap-4">
           <img
             src={guidePhoto}
@@ -75,7 +75,7 @@ const ShortTourscard = ({sTour}) => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Duration & Departure */}
       <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-3">

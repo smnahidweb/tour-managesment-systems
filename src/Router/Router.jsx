@@ -23,6 +23,8 @@ import ReviewForm from '../Components/ReviewForm';
 import Terms from '../Pages/Terms';
 import PrivacyPolicy from '../Pages/PrivacyPolicy';
 import { AuthContext } from '../Provider/AuthProvider';
+import Popular from '../Pages/Popular';
+import AuthLayout from '../Layout/AuthLayout';
 
 const Router = createBrowserRouter([
   {
@@ -35,13 +37,17 @@ const Router = createBrowserRouter([
             Component:Home
         },
         {
-            path:"/register",
-            Component:Register
+         path:'/popular-tour',
+         Component:Popular
         },
-        {
-            path:"/login",
-            Component:Login
-        },
+        // {
+        //     path:"/register",
+        //     Component:Register
+        // },
+        // {
+        //     path:"/login",
+        //     Component:Login
+        // },
         {
             path:'/allPackages',
             Component:AllPackages,
@@ -112,7 +118,26 @@ const Router = createBrowserRouter([
         }
        
     ]
+   
   },
+
+  {
+
+    path:'/',
+    Component:AuthLayout,
+    children:[
+        {
+            path:"/register",
+            Component:Register
+        },
+        {
+            path:"/login",
+            Component:Login
+        },
+    ]
+
+  },
+
   {
     path:'*',
     Component:Error

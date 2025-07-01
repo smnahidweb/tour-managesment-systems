@@ -25,19 +25,24 @@ const Booking = () => {
       } ,[id,user?.accessToken])
       const navigate = useNavigate();
 
-    const handleBookCount = (id)=>{
-      axios.patch(`https://booking-management-system-server-si.vercel.app/allPackages/${id}/increment`,{
-         headers:{
-            authorization:`Bearer ${user?.accessToken}`
-          }
-      })
-      .then(res =>{
-        console.log(res.data)
-      })
-      .catch(error =>{
-        console.log(error)
-      })
+ const handleBookCount = (id) => {
+  axios.patch(
+    `https://booking-management-system-server-si.vercel.app/allPackages/${id}/increment`,
+    {}, // body (empty)
+    {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`,
+      },
     }
+  )
+  .then(res => {
+    console.log("Booking count updated:", res.data);
+  })
+  .catch(error => {
+    console.error("Error updating booking count:", error);
+  });
+};
+
 
     const handleBooking = (e) =>{
          e.preventDefault();
@@ -72,7 +77,9 @@ const Booking = () => {
                 Swal.fire({
                                 title: `Congratulation ${user?.displayName} Booking added Successfully`,
                                 icon: "success",
-                                draggable: true })
+                                draggable: true,
+                                background:'green-500'
+                              })
              navigate('/myBooking')
             }
     })

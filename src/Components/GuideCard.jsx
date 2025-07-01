@@ -21,7 +21,7 @@ const GuideCard = ({single}) => {
        <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700" data-aos="fade-up">
       
       {/* Header background */}
-      <div className="h-36 bg-gradient-to-tr from-green-600 to-blue-500"></div>
+      <div className="h-36 bg-gradient-to-tr from-green-300 to-green-500"></div>
 
       {/* Profile image */}
       <div className="-mt-16 flex justify-center">

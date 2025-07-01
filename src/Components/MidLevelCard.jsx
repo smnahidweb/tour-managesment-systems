@@ -34,7 +34,7 @@ const MidLevelCard = ({mTour}) => {
   >
     {/* Badge */}
     <span className="absolute top-3 left-3 bg-yellow-400 text-gray-900 font-semibold text-xs px-3 py-1 rounded-full shadow-md uppercase z-10">
-     Mid Level Tour
+     Mid Tour
     </span>
 
     {/* Tour Image */}
@@ -58,24 +58,7 @@ const MidLevelCard = ({mTour}) => {
         </p>
       </div>
 
-      {/* Guide Info */}
-      <div className="flex flex-col gap-3 mb-4">
-        <div className="flex items-center gap-4">
-          <img
-            src={guidePhoto}
-            alt={`Guide: ${guideName}`}
-            className="w-12 h-12 rounded-full border-2 border-green-600 shadow-sm object-cover"
-          />
-          <div>
-            <p className="text-base font-semibold text-gray-800 dark:text-gray-200">
-              {guideName}
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">
-              Tour Guide
-            </p>
-          </div>
-        </div>
-      </div>
+  
 
       {/* Duration & Departure */}
       <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-3">

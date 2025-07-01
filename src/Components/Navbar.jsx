@@ -42,6 +42,7 @@ const handleSignOut = ()=>{
     <>
       <li className='text-white text-md font-semibold'><NavLink to="/">Home</NavLink></li>
       <li  className='text-white text-md font-semibold'><NavLink to="/allPackages">All Packages</NavLink></li>
+       <li  className='text-white text-md font-semibold'><NavLink to="/popular-tour">Popular Tour</NavLink></li>
       {
       user ? <li  className='text-white text-md font-semibold'><NavLink to="/myBooking">My Booking</NavLink></li>:''
       }

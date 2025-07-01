@@ -1,101 +1,124 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router';
-import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
+import { NavLink } from 'react-router';
+import { FaQuoteLeft } from 'react-icons/fa';
 import 'swiper/css';
-import Reviewscard from './Reviewscard';
-import { useInView } from 'react-intersection-observer';
 import { AuthContext } from '../Provider/AuthProvider';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
-  const {user} = useContext(AuthContext)
+  const [expandedId, setExpandedId] = useState(null);
+  const { user } = useContext(AuthContext);
   const swiperRef = useRef(null);
-  const { ref, inView } = useInView({ threshold: 0.3 });
 
   useEffect(() => {
-    fetch('https://booking-management-system-server-si.vercel.app/reviews',{
-       headers:{
-            authorization:`Bearer ${user?.accessToken}`
-          }
+    fetch('https://booking-management-system-server-si.vercel.app/reviews', {
+      headers: {
+        authorization: `Bearer ${user?.accessToken}`,
+      },
     })
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, [user?.accessToken]);
 
-  // Control autoplay when section enters or leaves viewport
-  useEffect(() => {
-    if (swiperRef.current) {
-      if (inView) {
-        swiperRef.current.autoplay.start();
-      } else {
-        swiperRef.current.autoplay.stop();
-      }
-    }
-  }, [inView]);
+  const toggleReadMore = (id) => {
+    setExpandedId(prev => (prev === id ? null : id));
+  };
 
   return (
-    <div className="container mx-auto px-4" ref={ref}>
-      <motion.div
-        className="text-center max-w-2xl mx-auto mb-12"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-      >
-        <motion.h2
-          className="text-3xl md:text-4xl font-bold mb-4 mt-10"
-          style={{ color: '#22c55e' }}
-          animate={{
-            color: ['#22c55e', '#14b8a6', '#84cc16', '#10b981', '#22c55e'],
+    <section className=" dark:bg-gray-900 py-16 px-4">
+      <div className="container mx-auto px-4">
+        {/* Heading */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h2 className="text-4xl font-extrabold mb-2 text-[var(--HEADING-TITLE-TEXT)]">
+            Our Testimonial
+          </h2>
+          <h3 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-2">
+            Real Feedback from Our Happy Travelers Worldwide
+          </h3>
+        </div>
+
+        {/* Swiper Carousel */}
+        <Swiper
+          modules={[Autoplay]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
           }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            repeatType: 'loop',
+          loop={true}
+          spaceBetween={30}
+          breakpoints={{
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
           }}
         >
-          Our Testimonial
-        </motion.h2>
-        <h3 className="text-xl md:text-2xl font-semibold text-green-600 mb-2">
-          Real Feedback from Our Happy Travelers Worldwide
-        </h3>
-        <p className="text-[var(--TEXT-COLOR)] text-base md:text-lg">
-          Our attraction passes save you more than buying individual tickets for your tour package system.
-        </p>
-      </motion.div>
+          {reviews.map((review) => {
+            const isExpanded = expandedId === review._id;
+            const feedbackWords = review.feedback?.split(' ') || [];
+            const displayedText = isExpanded
+              ? review.feedback
+              : feedbackWords.slice(0, 4).join(' ');
 
-      {/* Swiper Carousel */}
-      <Swiper
-        modules={[Autoplay]}
-        onSwiper={(swiper) => (swiperRef.current = swiper)}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true,
-        }}
-        loop={true}
-        spaceBetween={30}
-        breakpoints={{
-          640: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
-        }}
-      >
-        {reviews.map((review) => (
-          <SwiperSlide key={review._id}>
-            <Reviewscard review={review} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            return (
+              <SwiperSlide key={review._id}>
+                <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-6 h-full flex flex-col justify-between">
+                  <FaQuoteLeft className="text-green-500 text-xl mb-4" />
 
-      <NavLink to="/reviews">
-        <button className="bg-green-500 btn-wide mt-8 mb-12 mx-auto flex justify-center text-white rounded-md btn">
-          Give your Review
-        </button>
-      </NavLink>
-    </div>
+                  {/* Inline feedback + read more */}
+                  <p className="text-gray-700 dark:text-gray-200 mb-4 text-sm leading-relaxed">
+                    "{displayedText}
+                    {feedbackWords.length > 5 && (
+                      <>
+                        {!isExpanded && '...'}
+                        <button
+                          onClick={() => toggleReadMore(review._id)}
+                          className="text-green-600 underline text-xs ml-1"
+                        >
+                          {isExpanded ? 'Read Less' : 'Read More'}
+                        </button>
+                      </>
+                    )}"
+                  </p>
+
+                  <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-4" />
+
+                  <div className="flex items-center gap-4 mt-auto">
+                    {review.photoURL ? (
+                      <img
+                        src={review.photoURL}
+                        alt={review.name}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-green-500"
+                      />
+                    ) : (
+                      <div className="w-12 h-12 rounded-full bg-green-600 text-white flex items-center justify-center text-lg font-bold border-2 border-green-500">
+                        {review.name?.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                    <div className="text-sm">
+                      <p className="font-semibold text-gray-800 dark:text-white">{review.name}</p>
+                      <p className="text-gray-500 dark:text-gray-400">{review.role}</p>
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+
+        {/* CTA Button */}
+        <div className="text-center">
+          <NavLink to="/reviews">
+            <button className="bg-green-600 hover:bg-green-700 text-white font-semibold mt-8 px-6 py-3 rounded-lg shadow-md transition">
+              Give Your Review
+            </button>
+          </NavLink>
+        </div>
+      </div>
+    </section>
   );
 };
 
