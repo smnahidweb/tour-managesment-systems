@@ -53,7 +53,7 @@ const handleSignOut = ()=>{
   
 
   return (
-    <div className="navbar bg-base-100 shadow-sm px-4 md:px-8">
+    <div className="navbar bg-[var( --HEADING-TITLE-TEXT)] shadow-sm px-4 md:px-8">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
