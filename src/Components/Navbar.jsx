@@ -40,20 +40,20 @@ const handleSignOut = ()=>{
   }
   const links = (
     <>
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/allPackages">All Packages</NavLink></li>
+      <li className='text-white text-md font-semibold'><NavLink to="/">Home</NavLink></li>
+      <li  className='text-white text-md font-semibold'><NavLink to="/allPackages">All Packages</NavLink></li>
       {
-      user ? <li><NavLink to="/myBooking">My Booking</NavLink></li>:''
+      user ? <li  className='text-white text-md font-semibold'><NavLink to="/myBooking">My Booking</NavLink></li>:''
       }
-      <li><NavLink to="/aboutUs">About Us</NavLink></li>
-      <li><NavLink to="/register">Register</NavLink></li>
+      <li  className='text-white text-md'><NavLink to="/aboutUs">About Us</NavLink></li>
+      <li  className='text-white text-md font-semibold'><NavLink to="/register">Register</NavLink></li>
 
     </>
   );
   
 
   return (
-    <div className="navbar bg-[var( --HEADING-TITLE-TEXT)] shadow-sm px-4 md:px-8">
+    <div className="navbar sticky top-0 z-50 bg-green-500 shadow-md px-4 md:px-8">
       {/* Navbar Start */}
       <div className="navbar-start">
         {/* Mobile Dropdown */}
@@ -71,7 +71,7 @@ const handleSignOut = ()=>{
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[50] p-2 shadow bg-green-500 w-30"
           >
             {links}
           </ul>
@@ -79,8 +79,8 @@ const handleSignOut = ()=>{
 
         {/* Logo and Brand Name */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="logo" className="w-10 h-10 rounded-full hidden md:block" />
-          <NavLink to="/" className="text-2xl font-bold text-green-600">TourNest</NavLink>
+          <img src={logo} alt="logo" className="w-10 h-10 text-xl rounded-full hidden md:block" />
+       <p className='text-md font-semibold text-white'>   TourNest</p>
         </div>
       </div>
 
@@ -96,25 +96,30 @@ const handleSignOut = ()=>{
 
 
 
-<label className="cursor-pointer w-14 h-8 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center px-1 relative">
-          <input
-            type="checkbox"
-            checked={theme === 'dark'}
-            onChange={handleThemeToggle}
-            className="sr-only"
-          />
-          <div
-            className={`absolute w-6 h-6 bg-white dark:bg-yellow-400 rounded-full shadow-md transform transition-transform duration-300 ${
-              theme === 'dark' ? 'translate-x-6' : 'translate-x-0'
-            }`}
-          />
-          <div className="absolute left-1 text-gray-600 dark:text-white">
-            <Sun size={16} />
-          </div>
-          <div className="absolute right-1 text-gray-600 dark:text-yellow-300">
-            <Moon size={16} />
-          </div>
-        </label>
+ <label className="relative w-16 h-9 rounded-full bg-white dark:bg-gray-800 shadow-inner border-2 border-white dark:border-green-500 flex items-center px-1 transition-colors duration-300">
+  <input
+    type="checkbox"
+    checked={theme === 'dark'}
+    onChange={handleThemeToggle}
+    className="sr-only peer"
+  />
+
+  {/* Thumb */}
+  <div
+    className={`absolute top-0.5 left-0.5 w-7 h-7 rounded-full bg-green-500 dark:bg-yellow-400 shadow-md transform transition-transform duration-300 peer-checked:translate-x-7`}
+  />
+
+  {/* Sun icon */}
+  <div className="z-10 text-yellow-500 dark:text-gray-200 ml-1">
+    <Sun size={16} />
+  </div>
+
+  {/* Moon icon */}
+  <div className="ml-auto z-10 text-gray-300 dark:text-yellow-300 mr-1">
+    <Moon size={16} />
+  </div>
+</label>
+
 
 
         {
@@ -125,30 +130,25 @@ const handleSignOut = ()=>{
               onClick={() => setOpenDropdown(!openDropdown)}
               src={user.photoURL || "https://i.ibb.co/YTNF3nY/user.png"}
               alt="profile"
-              className="w-10 h-10 rounded-full border-2 border-green-500 cursor-pointer"
+              className="w-10 h-10 rounded-full border-2 border-white cursor-pointer"
             />
             {openDropdown && (
               <div className="absolute right-0 mt-3 w-56 bg-white dark:bg-gray-800 shadow-lg border-green-500 rounded-lg z-50 p-4 space-y-2">
                 <p className="font-semibold text-gray-800 dark:text-white">{user.displayName}</p>
-                <hr className='text-green-700' />
+                <hr className='text-green-600' />
                 <NavLink
                   to="/addPackage"
-                  className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900"
+                  className="flex items-center gap-2 text-sm text-green-500 hover:text-green-700"
                 >
                   <MdOutlineAddBox /> Add Package
                 </NavLink>
                 <NavLink
                   to="/managePackages"
-                  className="flex items-center gap-2 text-sm text-green-700 hover:text-green-900"
+                  className="flex items-center gap-2 text-sm text-green-500 hover:text-green-700"
                 >
                   <FiPackage /> Manage My Packages
                 </NavLink>
-                {/* <NavLink to={'/reviews'}>
-                  <button  className="flex items-center mt-2 mb-2 gap-2 cursor-pointer text-sm text-green-700 hover:text-green-900">
-                  <FaStar/>  Add Reviews
-                  </button>
-        
-                </NavLink> */}
+                
                 <button
                   onClick={handleSignOut}
                   className="flex items-center gap-2 btn text-sm text-red-600 hover:text-red-800"
@@ -163,7 +163,7 @@ const handleSignOut = ()=>{
         }
         {
           !user && <NavLink to={'/login'}>
-          <button className='btn bg-green-600 text-white'>Log in</button>
+          <button className='btn btn-sm bg-white text-black'>Log in</button>
         </NavLink>
         }
       </div>
