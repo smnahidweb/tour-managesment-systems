@@ -2,12 +2,13 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 import { FaBoxOpen, FaCompass, FaHeadset, FaAward } from 'react-icons/fa';
+import { FiChevronDown } from 'react-icons/fi';
 
 const Banner = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative w-full h-[70vh] overflow-hidden ">
+    <div className="relative w-full h-screen overflow-hidden">
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
@@ -22,14 +23,14 @@ const Banner = () => {
       <div className="absolute inset-0 bg-black/60 z-10" />
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white px-2 sm:px-4">
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white px-4 sm:px-6 md:px-8 max-w-5xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-3xl sm:text-5xl font-bold mb-3 leading-tight"
+          className="text-3xl sm:text-5xl font-extrabold mb-2 leading-tight"
         >
-          Discover. Book. Travel.
+          Discover. Book. Travel. 
           <motion.span
             animate={{
               color: ['#22c55e', '#10b981', '#4ade80', '#22c55e'],
@@ -41,13 +42,23 @@ const Banner = () => {
           </motion.span>
         </motion.h1>
 
+        {/* Meaningful Eco Based Tour Subtitle */}
+        {/* <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 1 }}
+          className="text-3xl sm:text-5xl text-white font-extrabold mb-2 leading-tight"
+        >
+          Explore Sustainable and Eco-Friendly Adventures
+        </motion.h2> */}
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5, duration: 1 }}
-          className="text-base sm:text-lg max-w-2xl text-gray-300 mb-6"
+          className="text-sm sm:text-base max-w-xl text-gray-300 mb-8"
         >
-          Book unforgettable experiences with trusted local guides, exclusive packages, and seamless support.
+          Book unforgettable experiences with trusted local guides, exclusive packages, and eco-friendly adventures that respect nature.
         </motion.p>
 
         <motion.button
@@ -60,7 +71,7 @@ const Banner = () => {
         </motion.button>
 
         {/* Feature Icons */}
-        <div className="flex flex-wrap justify-center gap-6 mt-8 text-white">
+        <div className="flex flex-wrap justify-center gap-6 mt-12 text-white">
           {[
             { icon: <FaBoxOpen className="text-3xl" />, title: 'Custom Trips' },
             { icon: <FaCompass className="text-3xl" />, title: 'Easy Booking' },
@@ -74,6 +85,17 @@ const Banner = () => {
           ))}
         </div>
       </div>
+
+      {/* Animated Down Arrow fixed at bottom center */}
+      <motion.div
+        animate={{ y: [0, 15, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-green-400 text-5xl cursor-pointer"
+        aria-label="Scroll down"
+        role="img"
+      >
+        <FiChevronDown />
+      </motion.div>
     </div>
   );
 };

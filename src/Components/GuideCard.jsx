@@ -18,7 +18,7 @@ const GuideCard = ({single}) => {
 
     } = single
     return (
-       <div className="w-full max-w-md mx-auto bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700" data-aos="fade-up">
+       <div className="w-full max-w-md mx-auto  dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700" data-aos="fade-up">
       
       {/* Header background */}
       <div className="h-36 bg-gradient-to-tr from-green-300 to-green-500"></div>
@@ -34,8 +34,8 @@ const GuideCard = ({single}) => {
 
       {/* Guide Info */}
       <div className="px-8 py-6 text-center">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-white">{guideName}</h2>
-        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{guideEmail}</p>
+        <h2 className="text-3xl font-bold text-[var(--TEXT-COLOR)] dark:text-white">{guideName}</h2>
+        <p className="text-sm text-[var(--TEXT-COLOR)] dark:text-gray-400 mt-1">{guideEmail}</p>
       </div>
 
       {/* Tags */}

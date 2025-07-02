@@ -84,7 +84,7 @@ const Login = () => {
         
         {/* Left: Login Form */}
         <div className="p-8 sm:p-12  dark:bg-gray-900">
-          <h2 className="text-3xl font-bold text-green-500  mb-2 mt-4 text-center">Welcome Back</h2>
+          <h2 className="text-3xl font-bold text-green-600  mb-2 mt-4 text-center">Welcome Back</h2>
           <p className="text-center text-lg text-[var(--TEXT-COLOR)] dark:text-gray-300 mb-8">Sign in to your account</p>
 
           <form onSubmit={handleLogin} className="space-y-5">
@@ -95,19 +95,19 @@ const Login = () => {
                 type="email"
                 name="email"
                 required
-                className="w-full px-4 py-2 border rounded-lg  dark:text-white focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-2 rounded-lg border-1  focus:ring-2"
                 placeholder="you@example.com"
               />
             </div>
 
             {/* Password */}
             <div>
-              <label className="block text-sm font-medium text-[var(--TEXT-COLOR)] mb-1">Password</label>
+              <label className="block text-sm font-medium   text-[var(--TEXT-COLOR)] mb-1">Password</label>
               <input
                 type="password"
                 name="password"
                 required
-                className="w-full px-4 py-2 border rounded-lg dark:bg-gray-900 dark:text-white focus:ring-2 focus:ring-green-500"
+                className="w-full px-4 py-2 border-1 rounded-lg  "
                 placeholder="••••••••"
               />
             </div>
@@ -132,7 +132,7 @@ const Login = () => {
           <button
             onClick={handleLoginWithGoogle}
             type="button"
-            className="w-full cursor-pointer flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2 hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+            className="w-full cursor-pointer flex items-center justify-center gap-3 border border-gray-300 rounded-lg py-2   transition"
           >
             <FaGoogle size={20} />
             <span className="text-[var(--TEXT-COLOR)] font-medium">Continue with Google</span>

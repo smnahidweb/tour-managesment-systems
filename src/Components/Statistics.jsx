@@ -39,19 +39,19 @@ const Statistics = () => {
       label: "Total Tour Packages",
       value: allPackages.length,
       icon: <FaBoxOpen />,
-      bg: "from-green-400 to-green-500",
+      bg: "from-green-400 to-green-600",
     },
     {
       label: "Total Bookings",
       value: myBookings,
       icon: <FaCheckCircle />,
-      bg: "from-green-400 to-green-500",
+      bg: "from-green-400 to-green-600",
     },
     {
       label: "Years of Service",
       value: 15,
       icon: <FaClock />,
-      bg: "from-green-400 to-green-500",
+      bg: "from-green-400 to-green-600",
     },
   ];
 

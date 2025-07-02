@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'; 
 import { FaCalendarAlt, FaClock } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -14,8 +14,6 @@ const FeaturedCard = ({ data }) => {
     departureLocation,
     destination,
     imageUrl,
-    guideName,
-    guidePhoto,
     duration,
     departureDate,
     price,
@@ -23,46 +21,37 @@ const FeaturedCard = ({ data }) => {
   } = data;
 
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300" data-aos="fade-up">
-      <img src={imageUrl} className="w-full h-48 object-cover" />
+    <div className="dark:bg-gray-900 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300" data-aos="fade-up">
+      <img src={imageUrl} alt={tourName} className="w-full h-48 object-cover" />
+
       <div className="p-4">
-        <h3 className="text-xl font-semibold text-green-700 dark:text-green-300 mb-2">{tourName}</h3>
+        {/* Title */}
+        <h3 className="text-xl font-semibold text-[var(--HEADING-TITLE-TEXT)] dark:text-green-300 mb-2">
+          {tourName}
+        </h3>
 
         {/* Route Info */}
         <div className="flex items-center gap-3 mb-3">
-          <p className="text-sm font-medium text-gray-800 dark:text-gray-300">
+          <p className="text-sm font-medium text-[var(--TEXT-COLOR)]">
             {departureLocation} to {destination}
           </p>
         </div>
 
-        {/* Guide Info */}
-        {/* <div className="flex items-center gap-4 mb-4">
-          <img
-            src={guidePhoto}
-            alt={`Guide: ${guideName}`}
-            className="w-12 h-12 rounded-full border-2 border-green-600 shadow-sm object-cover"
-          />
-          <div>
-            <p className="text-base font-semibold text-gray-800 dark:text-gray-200">{guideName}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">Tour Guide</p>
-          </div>
-        </div> */}
-
         {/* Duration & Departure */}
-        <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400 mb-3">
-          <span className="flex items-center gap-2">
-            <FaClock className="text-green-600" />
+        <div className="flex items-center justify-between text-sm mb-3">
+          <span className="flex items-center gap-2 text-[var(--TEXT-COLOR)]">
+            <FaClock className="text-[var(--TEXT-COLOR)]" />
             {duration}
           </span>
-          <span className="flex items-center gap-2">
-            <FaCalendarAlt className="text-green-600" />
+          <span className="flex items-center gap-2 text-[var(--TEXT-COLOR)]">
+            <FaCalendarAlt className="text-[var(--HEADING-TITLE-TEXT)]" />
             {departureDate}
           </span>
         </div>
 
         {/* Price & Button */}
         <div className="flex items-center justify-between mt-4">
-          <p className="text-lg font-bold text-green-600">৳{price}</p>
+          <p className="text-lg font-bold text-[var(--HEADING-TITLE-TEXT)]">৳{price}</p>
           <Link
             to={`/allPackages/${_id}`}
             className="px-4 py-1.5 bg-green-600 text-white rounded-lg text-sm hover:bg-green-700 transition"

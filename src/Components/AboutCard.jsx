@@ -1,24 +1,14 @@
 import React, { useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router'; // fixed import
 import { motion } from 'framer-motion';
-import 'aos/dist/aos.css';
 import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AboutCard = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      offset: 120,
-      easing: 'ease-in-out',
-    });
+    AOS.init({ duration: 1000, once: true, offset: 120 });
   }, []);
-
-  const img = 'https://i.ibb.co/Q3N6hRPH/couple-family-traveling-together.jpg';
-  const img1 = 'https://i.ibb.co/qLTxyDrB/nahid.jpg';
-  const img2 = 'https://i.ibb.co/bj4tjDgv/lawer10.jpg';
-  const img3 = 'https://i.ibb.co/G3Fybcxv/lawer11.jpg';
 
   const features = [
     'Trusted, Local Travel Experts',
@@ -29,70 +19,84 @@ const AboutCard = () => {
     'Best Price Guarantee',
   ];
 
+  const teamImages = [
+    'https://i.ibb.co/qLTxyDrB/nahid.jpg',
+    'https://i.ibb.co/bj4tjDgv/lawer10.jpg',
+    'https://i.ibb.co/G3Fybcxv/lawer11.jpg',
+  ];
+
   return (
-    <section className="py-20 px-6 md:px-16" data-aos="fade-up">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-stretch">
-        
-        {/* Left: Image */}
-        <div className="relative w-full md:w-1/2 flex items-stretch">
-          <div className="w-full rounded-3xl overflow-hidden">
-            <img
-              src={img}
-              alt="Traveler"
-              className="object-cover w-full h-full max-h-[600px] rounded-3xl"
-            />
-          </div>
-          <div className="absolute top-6 left-6 bg-[#28a745] text-white px-6 py-4 rounded-2xl text-center shadow-lg">
-            <p className="text-4xl font-bold leading-none">15+</p>
-            <p className="text-sm font-semibold mt-1">Years of Experience</p>
+    <section className="py-16 px-6 md:px-16 dark:bg-gray-900" data-aos="fade-up">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-10">
+
+        {/* Image Section */}
+        <div className="w-full md:w-1/2 relative rounded-3xl overflow-hidden shadow-xl">
+          <img
+            src="https://i.ibb.co/Q3N6hRPH/couple-family-traveling-together.jpg"
+            alt="Traveler"
+            className="w-full h-full max-h-[550px] object-cover rounded-3xl"
+          />
+          <div className="absolute top-5 left-5 bg-[var(--HEADING-TITLE-TEXT)] text-white px-5 py-3 rounded-xl shadow-lg">
+            <p className="text-3xl font-bold">15+</p>
+            <p className="text-sm font-medium mt-1">Years of Experience</p>
           </div>
         </div>
 
-        {/* Right: Content */}
-        <div className="w-full md:w-1/2 text-green-600 space-y-6 max-w-xl mx-auto md:mx-0">
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight text-[var(--HEADING-TITLE-TEXT)]">
-            Our Journey: Memorable Adventures Worldwide
+        {/* Content Section */}
+        <div className="w-full md:w-1/2 space-y-6 max-w-xl">
+          <h2 className="text-3xl md:text-4xl font-bold leading-tight text-[var(--HEADING-TITLE-TEXT)] dark:text-green-300">
+            Why Choose TourNest?
           </h2>
-
-          <p className="text-base text-[var(--TEXT-COLOR)] leading-relaxed">
-            We offer carefully curated destinations and tours that capture the true essence of location. Our attraction passes save you more than buying individual tickets for your tour package.
+          <p className="text-[var(--TEXT-COLOR)] dark:text-gray-300">
+            We provide carefully curated tour experiences that highlight each destination's essence. Save more with our attraction passes, and travel smarter with real-time itinerary updates and local support.
           </p>
 
-          {/* Quote box */}
-          <div className="bg-white p-6 border-l-4 border-green-400 shadow rounded-xl">
-            <p className="font-semibold text-green-600">
+          {/* Quote */}
+          <div className="bg-white dark:bg-gray-800 p-5 border-l-4 border-[var(--HEADING-TITLE-TEXT)] shadow rounded-lg">
+            <p className="font-semibold text-[var(--HEADING-TITLE-TEXT)] dark:text-green-300">
               "Explore Freely, Travel Smart – with TourNest."
             </p>
           </div>
 
-          {/* Features */}
+          {/* Features Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {features.map((feature, idx) => (
-              <div key={idx} className="flex items-center gap-2 text-sm">
-                <CheckCircle className="text-green-500 w-4 h-4" />
+              <div
+                key={idx}
+                className="flex items-center gap-2 text-sm text-[var(--TEXT-COLOR)] dark:text-gray-200"
+              >
+                <CheckCircle className="text-[var(--HEADING-TITLE-TEXT)] w-4 h-4" />
                 <span>{feature}</span>
               </div>
             ))}
           </div>
 
-          {/* CTA Button and Avatars */}
-          <div className="pt-4 flex items-center gap-6">
+          {/* CTA + Avatars */}
+          <div className="pt-3 flex flex-wrap items-center gap-6">
             <NavLink to={'/aboutUs'}>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-green-600 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:from-green-600 hover:to-teal-600 transition duration-300"
+                className="bg-[var(--HEADING-TITLE-TEXT)] hover:bg-green-700 px-6 py-2.5 rounded-full text-white font-medium shadow-lg"
               >
-                Explore TourNest
+                Learn More
               </motion.button>
             </NavLink>
             <div className="flex items-center -space-x-3">
-              <img src={img1} className="w-10 h-10 rounded-full border-2 border-white" alt="" />
-              <img src={img2} className="w-10 h-10 rounded-full border-2 border-white" alt="" />
-              <img src={img3} className="w-10 h-10 rounded-full border-2 border-white" alt="" />
-              <div className="ml-4 bg-green-400 text-white px-3 py-1 rounded-full text-sm font-medium shadow">8K+</div>
+              {teamImages.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  className="w-10 h-10 rounded-full border-2 border-white shadow-md"
+                  alt="team"
+                />
+              ))}
+              <div className="ml-4 bg-[var(--HEADING-TITLE-TEXT)] text-white px-3 py-1 rounded-full text-sm font-semibold shadow">
+                8K+ Travelers
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>

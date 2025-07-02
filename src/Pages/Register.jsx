@@ -101,7 +101,7 @@ const Register = () => {
       </div>
 
       {/* Right Side: Form */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-white dark:bg-gray-800 p-8 sm:p-12">
+      <div className="w-full md:w-1/2 flex items-center justify-center  dark:bg-gray-800 p-8 sm:p-12">
         <div className="w-full max-w-md">
           <h2 className="text-3xl font-bold text-[var(--HEADING-TITLE-TEXT)] mb-6 text-center">
             Create an Account

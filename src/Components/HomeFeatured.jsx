@@ -40,7 +40,7 @@ const HomeFeatured = ({ FeaturedPromise }) => {
         <p className="text-xl text-[var(--HEADING-TITLE-TEXT)] font-medium mb-2">
           Unforgettable Destinations Curated for You.
         </p>
-        <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
+        <p className="text-sm md:text-base text-[var( --TEXT-COLOR)] dark:text-gray-400">
           From serene hills to vibrant beaches, our packages offer the perfect mix of adventure, culture, and relaxation.
         </p>
       </div>

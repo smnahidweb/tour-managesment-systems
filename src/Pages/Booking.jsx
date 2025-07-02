@@ -177,7 +177,7 @@ const Booking = () => {
       {/* Submit */}
       <button 
         type="submit" 
-        className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition duration-300"
+        className="w-full cursor-pointer bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-lg transition duration-300"
       >
         Book Now
       </button>

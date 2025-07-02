@@ -34,7 +34,7 @@ const Reviews = () => {
           <h2 className="text-4xl font-extrabold mb-2 text-[var(--HEADING-TITLE-TEXT)]">
             Our Testimonial
           </h2>
-          <h3 className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-2">
+          <h3 className="text-xl md:text-2xl text-[var(--TEXT-COLOR)] dark:text-gray-300 mb-2">
             Real Feedback from Our Happy Travelers Worldwide
           </h3>
         </div>
@@ -65,11 +65,11 @@ const Reviews = () => {
 
             return (
               <SwiperSlide key={review._id}>
-                <div className="bg-white dark:bg-gray-800 shadow-md rounded-2xl p-6 h-full flex flex-col justify-between">
+                <div className=" dark:bg-gray-800 shadow-md rounded-2xl p-6 h-full flex flex-col justify-between">
                   <FaQuoteLeft className="text-green-500 text-xl mb-4" />
 
                   {/* Inline feedback + read more */}
-                  <p className="text-gray-700 dark:text-gray-200 mb-4 text-sm leading-relaxed">
+                  <p className="text-[var(--TEXT-COLOR)] dark:text-gray-200 mb-4 text-sm leading-relaxed">
                     "{displayedText}
                     {feedbackWords.length > 5 && (
                       <>
@@ -99,8 +99,8 @@ const Reviews = () => {
                       </div>
                     )}
                     <div className="text-sm">
-                      <p className="font-semibold text-gray-800 dark:text-white">{review.name}</p>
-                      <p className="text-gray-500 dark:text-gray-400">{review.role}</p>
+                      <p className="font-semibold text-[var(--TEXT-COLOR)] dark:text-white">{review.name}</p>
+                      <p className="text-[var(--TEXT-COLOR)] dark:text-gray-400">{review.role}</p>
                     </div>
                   </div>
                 </div>

@@ -217,7 +217,7 @@ const AddPackages = () => {
         <div className="md:col-span-2 text-center">
           <button
             type="submit"
-            className="bg-green-600 w-full cursor-pointer text-white font-semibold px-10 py-3 rounded-lg hover:bg-green-700 transition duration-300"
+            className="bg-green-600  w-full cursor-pointer text-white font-semibold px-10 py-3 rounded-lg hover:bg-green-700 transition duration-300"
           >
             Submit Package
           </button>
