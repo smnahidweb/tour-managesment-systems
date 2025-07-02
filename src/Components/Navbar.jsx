@@ -56,17 +56,28 @@ const Navbar = () => {
           <FaHome size={14} /> Home
         </NavLink>
       </li>
-      <li className="text-white text-sm font-semibold">
-        <NavLink to="/allPackages" className="flex items-center gap-1">
-          <FaThList size={14} /> All Packages
-        </NavLink>
-      </li>
+    
       <li className="text-white text-sm font-semibold">
         <NavLink to="/popular-tour" className="flex items-center gap-1">
           <FaFire size={14} /> Popular Tour
         </NavLink>
       </li>
+
+       {
+        user && (
+
+            <li className="text-white text-sm font-semibold">
+        <NavLink to="/allPackages" className="flex items-center gap-1">
+          <FaThList size={14} /> All Packages
+        </NavLink>
+      </li>
+        )
+       }
+
+
       {user && (
+
+        
         <li className="text-white text-sm font-semibold">
           <NavLink to="/myBooking" className="flex items-center gap-1">
             <FaTicketAlt size={14} /> My Booking
